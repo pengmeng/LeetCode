@@ -1,0 +1,7 @@
+#Python --PyCharm
+
+#Byte-compiled
+__pycache__/
+
+#MAC system files
+.DS_Store
