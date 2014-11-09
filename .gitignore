@@ -2,6 +2,6 @@
 
 #Byte-compiled
 __pycache__/
-
+.idea/
 #MAC system files
 .DS_Store
