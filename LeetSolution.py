@@ -181,7 +181,7 @@ class LeetSolution:
         return head
 
     def climbStairs(self, n):
-        result = [0 for x in range(0, n + 1)]
+        result = [0] * (n + 1)
         result[0] = 1
         result[1] = 1
         for i in range(2, n + 1):
