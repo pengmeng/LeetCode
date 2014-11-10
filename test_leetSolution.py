@@ -57,7 +57,7 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(1, s.climbStairs(1))
         self.assertEqual(2, s.climbStairs(2))
-        print(s.climbStairs(10))
+        self.assertEqual(89, s.climbStairs(10))
 
     def test_plusOne(self):
         s = LeetSolution()
@@ -66,3 +66,9 @@ class TestLeetSolution(TestCase):
         self.assertEqual([1, 5], s.plusOne([1, 4]))
         self.assertEqual([7, 8, 0], s.plusOne([7, 7, 9]))
         self.assertEqual([1, 0, 0, 0], s.plusOne([9, 9, 9]))
+
+    def test_addBinary(self):
+        s = LeetSolution()
+        self.assertEqual("100", s.addBinary("11", "1"))
+        self.assertEqual("1", s.addBinary("1", "0"))
+        self.assertEqual("110", s.addBinary("101", "1"))

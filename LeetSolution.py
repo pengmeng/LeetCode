@@ -1,5 +1,4 @@
 __author__ = 'mengpeng'
-from TreeNode import *
 
 
 class LeetSolution:
@@ -200,6 +199,19 @@ class LeetSolution:
                 digits[index] = temp
                 return digits
             index -= 1
-        if last != 0:
+        if last:
             digits.insert(0, last)
         return digits
+
+    #Pay attention to usage of slice and str functions in this sulotion
+    #and multi-value assignment and check clause
+    def addBinary(self, a, b):
+        reslen = max(len(a), len(b))
+        a, b = a.rjust(reslen, '0')[::-1], b.rjust(reslen, '0')[::-1]
+        last, res = 0, ''
+        for i in range(reslen):
+            last, temp = divmod(int(a[i]) + int(b[i]) + last, 2)
+            res += str(temp)
+        if last:
+            res += '1'
+        return res[::-1]
