@@ -52,3 +52,9 @@ class TestLeetSolution(TestCase):
         s.deleteDuplicates(ListNode.makeList([1, 1, 2, 3, 3])).show()
         s.deleteDuplicates(ListNode.makeList([1, 1, 2])).show()
         self.assertIsNone(s.deleteDuplicates(ListNode.makeList(None)))
+
+    def test_climbStairs(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.climbStairs(1))
+        self.assertEqual(2, s.climbStairs(2))
+        print(s.climbStairs(10))
