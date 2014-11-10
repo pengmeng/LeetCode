@@ -1,5 +1,5 @@
 __author__ = 'mengpeng'
-
+from ListNode import ListNode
 
 class LeetSolution:
 
@@ -215,3 +215,24 @@ class LeetSolution:
         if last:
             res += '1'
         return res[::-1]
+
+    def mergeTwoLists(self, l1, l2):
+        headone = l1
+        headtwo = l2
+        reshead = ListNode(0)
+        tail = reshead
+        while headone or headtwo:
+            if not headone:
+                tail.next = headtwo
+                return reshead.next
+            if not headtwo:
+                tail.next = headone
+                return reshead.next
+            if headone.val < headtwo.val:
+                tail.next = headone
+                headone = headone.next
+            else:
+                tail.next = headtwo
+                headtwo = headtwo.next
+            tail = tail.next
+        return reshead.next

@@ -72,3 +72,9 @@ class TestLeetSolution(TestCase):
         self.assertEqual("100", s.addBinary("11", "1"))
         self.assertEqual("1", s.addBinary("1", "0"))
         self.assertEqual("110", s.addBinary("101", "1"))
+
+    def test_mergeTwoLists(self):
+        s = LeetSolution()
+        print(s.mergeTwoLists(None, None))
+        s.mergeTwoLists(ListNode.makeList([1, 3, 7, 8]), ListNode.makeList([2, 6, 9, 10])).show()
+        s.mergeTwoLists(ListNode.makeList([1, 3, 7, 8]), None).show()
