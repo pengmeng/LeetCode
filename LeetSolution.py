@@ -187,3 +187,19 @@ class LeetSolution:
         for i in range(2, n + 1):
             result[i] = result[i-1] + result[i-2]
         return result[n]
+
+    def plusOne(self, digits):
+        index = len(digits) - 1
+        last = 1
+        while index >= 0:
+            temp = digits[index] + last
+            if temp > 9:
+                last = temp / 10
+                digits[index] = temp - 10
+            else:
+                digits[index] = temp
+                return digits
+            index -= 1
+        if last != 0:
+            digits.insert(0, last)
+        return digits

@@ -58,3 +58,11 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.climbStairs(1))
         self.assertEqual(2, s.climbStairs(2))
         print(s.climbStairs(10))
+
+    def test_plusOne(self):
+        s = LeetSolution()
+        self.assertEqual([2], s.plusOne([1]))
+        self.assertEqual([1, 0], s.plusOne([9]))
+        self.assertEqual([1, 5], s.plusOne([1, 4]))
+        self.assertEqual([7, 8, 0], s.plusOne([7, 7, 9]))
+        self.assertEqual([1, 0, 0, 0], s.plusOne([9, 9, 9]))
