@@ -78,3 +78,11 @@ class TestLeetSolution(TestCase):
         print(s.mergeTwoLists(None, None))
         s.mergeTwoLists(ListNode.makeList([1, 3, 7, 8]), ListNode.makeList([2, 6, 9, 10])).show()
         s.mergeTwoLists(ListNode.makeList([1, 3, 7, 8]), None).show()
+
+    def test_lengthOfLastWord(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.lengthOfLastWord(""))
+        self.assertEqual(5, s.lengthOfLastWord("abcde"))
+        self.assertEqual(4, s.lengthOfLastWord("aa dej    djed"))
+        self.assertEqual(0, s.lengthOfLastWord("    "))
+        self.assertEqual(1, s.lengthOfLastWord("a  "))

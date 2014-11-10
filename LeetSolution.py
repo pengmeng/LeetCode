@@ -236,3 +236,10 @@ class LeetSolution:
                 headtwo = headtwo.next
             tail = tail.next
         return reshead.next
+
+    def lengthOfLastWord(self, s):
+        if not s:
+            return 0
+        s = s.rstrip()
+        lastspace = s.rfind(' ')
+        return len(s) - lastspace - 1
