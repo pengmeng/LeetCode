@@ -47,6 +47,7 @@ class TestLeetSolution(TestCase):
         s.merge(A, 1, [], 0)
         self.assertEqual([1], A)
 
+    @unittest.skip("succ")
     def test_deleteDuplicates(self):
         s = LeetSolution()
         s.deleteDuplicates(ListNode.makeList([1, 1, 2, 3, 3])).show()
@@ -73,6 +74,7 @@ class TestLeetSolution(TestCase):
         self.assertEqual("1", s.addBinary("1", "0"))
         self.assertEqual("110", s.addBinary("101", "1"))
 
+    @unittest.skip("succ")
     def test_mergeTwoLists(self):
         s = LeetSolution()
         print(s.mergeTwoLists(None, None))
@@ -86,3 +88,22 @@ class TestLeetSolution(TestCase):
         self.assertEqual(4, s.lengthOfLastWord("aa dej    djed"))
         self.assertEqual(0, s.lengthOfLastWord("    "))
         self.assertEqual(1, s.lengthOfLastWord("a  "))
+
+    def test_countString(self):
+        s = LeetSolution()
+        self.assertEqual("11", s.countString("1"))
+        self.assertEqual("21", s.countString("11"))
+        self.assertEqual("1211", s.countString("21"))
+        self.assertEqual("111221", s.countString("1211"))
+
+    def test_countAndSay(self):
+        s = LeetSolution()
+        self.assertEqual("", s.countAndSay(0))
+        self.assertEqual("1", s.countAndSay(1))
+        self.assertEqual("11", s.countAndSay(2))
+        self.assertEqual("21", s.countAndSay(3))
+        self.assertEqual("1211", s.countAndSay(4))
+        self.assertEqual("111221", s.countAndSay(5))
+        self.assertEqual("312211", s.countAndSay(6))
+        self.assertEqual("13112221", s.countAndSay(7))
+        self.assertEqual("1113213211", s.countAndSay(8))

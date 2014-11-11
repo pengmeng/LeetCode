@@ -243,3 +243,28 @@ class LeetSolution:
         s = s.rstrip()
         lastspace = s.rfind(' ')
         return len(s) - lastspace - 1
+
+    def countAndSay(self, n):
+        last_result = ""
+        new_result = ""
+        for i in range(1, n + 1):
+            new_result = self.countString(last_result)
+            last_result = new_result
+        return new_result
+
+    def countString(self, s):
+        if not s:
+            return "1"
+        last_value = int(s[0])
+        last_count = 1
+        result = ""
+        for i in range(1, len(s)):
+            new_value = int(s[i])
+            if new_value == last_value:
+                last_count += 1
+            else:
+                result += str(last_count) + str(last_value)
+                last_count = 1
+                last_value = new_value
+        result += str(last_count) + str(last_value)
+        return result
