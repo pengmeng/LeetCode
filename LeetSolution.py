@@ -1,6 +1,7 @@
 __author__ = 'mengpeng'
 from ListNode import ListNode
 
+
 class LeetSolution:
 
     def isPalindrome(self, s):
@@ -303,3 +304,14 @@ class LeetSolution:
                     break
                 index_ne += 1
             index_hk += 1
+
+    def removeElement(self, A, elem):
+        length = len(A)
+        index = 0
+        while index < length:
+            if A[index] == elem:
+                A[index] = A[length - 1]
+                length -= 1
+            else:
+                index += 1
+        return index

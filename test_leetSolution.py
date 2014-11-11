@@ -116,3 +116,21 @@ class TestLeetSolution(TestCase):
         self.assertEqual(2, s.strStr("bcbcdef", "bcd"))
         self.assertEqual(2, s.strStr("ababac", "abac"))
         self.assertEqual(-1, s.strStr("mississippi", "issipi"))
+
+    def test_removeElement(self):
+        s = LeetSolution()
+        A = []
+        self.assertEqual(0, s.removeElement(A, 1))
+        self.assertEqual([], A)
+        A = [4, 5]
+        self.assertEqual(1, s.removeElement(A, 4))
+        self.assertEqual([5], A[0:1])
+        A = [1]
+        self.assertEqual(0, s.removeElement(A, 1))
+        self.assertEqual([], A[0:0])
+        A = [1, 2, 3, 1]
+        self.assertEqual(2, s.removeElement(A, 1))
+        self.assertEqual([3, 2], A[0:2])
+        A = [1]
+        self.assertEqual(1, s.removeElement(A, 2))
+        self.assertEqual([1], A)
