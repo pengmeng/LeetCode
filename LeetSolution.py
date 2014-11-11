@@ -246,11 +246,9 @@ class LeetSolution:
 
     def countAndSay(self, n):
         last_result = ""
-        new_result = ""
         for i in range(1, n + 1):
-            new_result = self.countString(last_result)
-            last_result = new_result
-        return new_result
+            last_result = self.countString(last_result)
+        return last_result
 
     def countString(self, s):
         if not s:
@@ -268,3 +266,40 @@ class LeetSolution:
                 last_value = new_value
         result += str(last_count) + str(last_value)
         return result
+
+    def strStrMy(self, haystack, needle):
+        index_hk, len_hk = 0, len(haystack)
+        index_ne, len_nd = 0, len(needle)
+        if len_nd == 0:
+            return 0
+        while index_hk < len_hk and index_ne < len_nd:
+            if haystack[index_hk] == needle[index_ne]:
+                last_pos = index_hk
+                while index_hk < len_hk:
+                    if haystack[index_hk] == needle[index_ne]:
+                        index_hk += 1
+                        index_ne += 1
+                    else:
+                        index_hk = last_pos + 1
+                        index_ne = 0
+                        break
+                    if index_ne == len_nd:
+                        return last_pos
+            else:
+                index_hk += 1
+        return -1
+
+    def strStr(self, haystack, needle):
+        index_hk, len_hk = 0, len(haystack)
+        index_ne, len_nd = 0, len(needle)
+        while True:
+            index_ne = 0
+            while True:
+                if index_ne == len_nd:
+                    return index_hk
+                if index_hk + index_ne == len_hk:
+                    return -1
+                if haystack[index_hk + index_ne] != needle[index_ne]:
+                    break
+                index_ne += 1
+            index_hk += 1

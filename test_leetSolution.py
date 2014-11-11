@@ -107,3 +107,12 @@ class TestLeetSolution(TestCase):
         self.assertEqual("312211", s.countAndSay(6))
         self.assertEqual("13112221", s.countAndSay(7))
         self.assertEqual("1113213211", s.countAndSay(8))
+
+    def test_strStr(self):
+        s = LeetSolution()
+        self.assertEqual(-1, s.strStr("", "abc"))
+        self.assertEqual(0, s.strStr("abc", ""))
+        self.assertEqual(0, s.strStr("", ""))
+        self.assertEqual(2, s.strStr("bcbcdef", "bcd"))
+        self.assertEqual(2, s.strStr("ababac", "abac"))
+        self.assertEqual(-1, s.strStr("mississippi", "issipi"))
