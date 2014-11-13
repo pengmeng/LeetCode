@@ -328,3 +328,27 @@ class LeetSolution:
                 i += 1
             j += 1
         return i + 1
+
+    #Valid Parentheses
+    #Python doesn't have switch-case like statement
+    def isValid(self, s):
+        index = 0
+        length = len(s)
+        stack = []
+        while index < length:
+            if s[index] == '(' or s[index] == '[' or s[index] == '{':
+                stack.append(s[index])
+            elif s[index] == ')':
+                if not stack or stack.pop() != '(':
+                    return False
+            elif s[index] == ']':
+                if not stack or stack.pop() != '[':
+                    return False
+            elif s[index] == '}':
+                if not stack or stack.pop() != '{':
+                    return False
+            index += 1
+        if stack and length != 0:
+            return False
+        else:
+            return True

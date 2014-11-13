@@ -152,3 +152,14 @@ class TestLeetSolution(TestCase):
         A = [1, 2, 3, 4, 4, 4, 4]
         self.assertEqual(4, s.removeDuplicates(A))
         self.assertEqual([1, 2, 3, 4], A[0:4])
+
+    def test_isValid(self):
+        s = LeetSolution()
+        self.assertTrue(s.isValid(""))
+        self.assertTrue(s.isValid("()"))
+        self.assertTrue(s.isValid("{[()]}"))
+        self.assertTrue(s.isValid("()[]{}"))
+        self.assertFalse(s.isValid("("))
+        self.assertFalse(s.isValid("]"))
+        self.assertFalse(s.isValid("(]"))
+        self.assertFalse(s.isValid("([)]"))
