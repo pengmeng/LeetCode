@@ -134,3 +134,21 @@ class TestLeetSolution(TestCase):
         A = [1]
         self.assertEqual(1, s.removeElement(A, 2))
         self.assertEqual([1], A)
+
+    def test_removeDuplicates(self):
+        s = LeetSolution()
+        A = []
+        self.assertEqual(0, s.removeDuplicates(A))
+        self.assertEqual([], A)
+        A = [1, 1, 1, 1]
+        self.assertEqual(1, s.removeDuplicates(A))
+        self.assertEqual([1], A[0:1])
+        A = [1, 1, 2]
+        self.assertEqual(2, s.removeDuplicates(A))
+        self.assertEqual([1, 2], A[0:2])
+        A = [1, 2, 3, 3, 4, 4, 4, 4, 5, 6]
+        self.assertEqual(6, s.removeDuplicates(A))
+        self.assertEqual([1, 2, 3, 4, 5, 6], A[0:6])
+        A = [1, 2, 3, 4, 4, 4, 4]
+        self.assertEqual(4, s.removeDuplicates(A))
+        self.assertEqual([1, 2, 3, 4], A[0:4])

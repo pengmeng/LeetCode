@@ -315,3 +315,16 @@ class LeetSolution:
             else:
                 index += 1
         return index
+
+    def removeDuplicates(self, A):
+        i, j = 0, 0
+        length = len(A)
+        if length == 0:
+            return 0
+        while j < length:
+            if (j == length - 1 or A[j+1] != A[j]) and (A[j] != A[i]):
+                if j - i > 1:
+                    A[i+1] = A[j]
+                i += 1
+            j += 1
+        return i + 1
