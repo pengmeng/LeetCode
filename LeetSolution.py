@@ -428,3 +428,18 @@ class LeetSolution:
             return MIN
         else:
             return result
+
+    #Reverse Integer
+    def reverse(self, x):
+        MAX, MIN = 2147483647, -2147483648
+        result = 0
+        factor = 1 if x > 0 else -1
+        x = abs(x)
+        while abs(x) != 0:
+            result = result * 10 + x % 10
+            x //= 10
+        result *= factor
+        if result > MAX or result < MIN:
+            return 0
+        else:
+            return result

@@ -209,3 +209,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1234, s.atoi("   1234  abc"))
         self.assertEqual(-12, s.atoi("  -12a34"))
         self.assertEqual(2147483647, s.atoi("21474836471"))
+
+    def test_reverse(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.reverse(0))
+        self.assertEqual(123, s.reverse(321))
+        self.assertEqual(1, s.reverse(100))
+        self.assertEqual(-134, s.reverse(-431))
