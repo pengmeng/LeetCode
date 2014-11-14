@@ -399,3 +399,32 @@ class LeetSolution:
             rev = rev * 10 + temp % 10
             temp //= 10
         return rev == x
+
+    def atoi(self, str):
+        index, length = 0, len(str)
+        result, factor = 0, 0
+        MAX, MIN = 2147483647, -2147483648
+        while index < length and str[index] == ' ':
+            index += 1
+        if index == length:
+            return result
+        elif str[index] == '+':
+            factor = 1
+            index += 1
+        elif str[index] == '-':
+            factor = -1
+            index += 1
+        elif str[index].isdigit():
+            factor = 1
+        else:
+            return result
+        while index < length and str[index].isdigit():
+            result = result * 10 + int(str[index])
+            index += 1
+        result *= factor
+        if result > MAX:
+            return MAX
+        elif result < MIN:
+            return MIN
+        else:
+            return result

@@ -197,3 +197,15 @@ class TestLeetSolution(TestCase):
         self.assertTrue(s.isPalindromeNumber(121))
         self.assertTrue(s.isPalindromeNumber(543212345))
         self.assertFalse(s.isPalindromeNumber(123))
+
+    def test_atoi(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.atoi(""))
+        self.assertEqual(1234, s.atoi("1234"))
+        self.assertEqual(1234, s.atoi("+1234"))
+        self.assertEqual(-1234, s.atoi("-1234"))
+        self.assertEqual(1, s.atoi("1"))
+        self.assertEqual(0, s.atoi("   a1234"))
+        self.assertEqual(1234, s.atoi("   1234  abc"))
+        self.assertEqual(-12, s.atoi("  -12a34"))
+        self.assertEqual(2147483647, s.atoi("21474836471"))
