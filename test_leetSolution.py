@@ -163,3 +163,16 @@ class TestLeetSolution(TestCase):
         self.assertFalse(s.isValid("]"))
         self.assertFalse(s.isValid("(]"))
         self.assertFalse(s.isValid("([)]"))
+
+    def test_removeNthFromEnd(self):
+        s = LeetSolution()
+        head = ListNode.makeList([1, 2, 3, 4, 5])
+        s.removeNthFromEnd(head, 2).show()
+        head = ListNode.makeList([1, 2])
+        s.removeNthFromEnd(head, 1).show()
+        head = ListNode.makeList([1])
+        print(s.removeNthFromEnd(head, 1))
+        head = ListNode.makeList([1, 2])
+        s.removeNthFromEnd(head, 2).show()
+        head = ListNode.makeList([1, 2, 3])
+        s.removeNthFromEnd(head, 3).show()

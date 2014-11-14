@@ -352,3 +352,18 @@ class LeetSolution:
             return False
         else:
             return True
+
+    def removeNthFromEnd(self, head, n):
+        pred = head
+        tail = head
+        while n > 0:
+            tail = tail.next
+            n -= 1
+        while tail and tail.next:
+            pred = pred.next
+            tail = tail.next
+        if not tail:
+            head = head.next
+        else:
+            pred.next = pred.next.next
+        return head
