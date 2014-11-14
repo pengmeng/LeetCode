@@ -164,6 +164,7 @@ class TestLeetSolution(TestCase):
         self.assertFalse(s.isValid("(]"))
         self.assertFalse(s.isValid("([)]"))
 
+    @unittest.skip("succ")
     def test_removeNthFromEnd(self):
         s = LeetSolution()
         head = ListNode.makeList([1, 2, 3, 4, 5])
@@ -176,3 +177,16 @@ class TestLeetSolution(TestCase):
         s.removeNthFromEnd(head, 2).show()
         head = ListNode.makeList([1, 2, 3])
         s.removeNthFromEnd(head, 3).show()
+
+    def test_commonPrefix(self):
+        s = LeetSolution()
+        self.assertEqual("", s.commonPrefix("", ""))
+        self.assertEqual("", s.commonPrefix("", "aaa"))
+        self.assertEqual("123", s.commonPrefix("12345", "123567"))
+
+    def test_longestCommonPrefix(self):
+        s = LeetSolution()
+        self.assertEqual("", s.longestCommonPrefix([]))
+        self.assertEqual("1", s.longestCommonPrefix(["1"]))
+        self.assertEqual("123", s.longestCommonPrefix(["1234", "123"]))
+        self.assertEqual("abc", s.longestCommonPrefix(["abcdef", "abcde", "abcdtg", "abcfff"]))

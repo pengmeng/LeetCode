@@ -367,3 +367,22 @@ class LeetSolution:
         else:
             pred.next = pred.next.next
         return head
+
+    def longestCommonPrefix(self, strs):
+        index, length = 1, len(strs)
+        if length == 0:
+            return ""
+        prefix = strs[0]
+        while index < length:
+            prefix = self.commonPrefix(prefix, strs[index])
+            index += 1
+        return prefix
+
+    def commonPrefix(self, string1, string2):
+        index = 0
+        length = min(len(string1), len(string2))
+        while index < length:
+            if string1[index] != string2[index]:
+                break
+            index += 1
+        return string1[0:index]
