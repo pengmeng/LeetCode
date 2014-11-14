@@ -466,3 +466,11 @@ class LeetSolution:
         for i in range(nRows):
             s += result[i]
         return s
+
+    #Find Minimum in Rotated Sorted Array
+    #Use binary search
+    def findMin(self, num):
+        for i in range(1, len(num)):
+            if num[i - 1] > num[i]:
+                return num[i]
+        return num and num[0]

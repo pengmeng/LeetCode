@@ -222,3 +222,9 @@ class TestLeetSolution(TestCase):
         self.assertEqual("abcds", s.convert("abcds", 1))
         self.assertEqual("PAHNAPLSIIGYIR", s.convert("PAYPALISHIRING", 3))
         self.assertEqual("PINALSIGYAHRPI", s.convert("PAYPALISHIRING", 4))
+
+    def test_findMin(self):
+        s = LeetSolution()
+        self.assertEqual([], s.findMin([]))
+        self.assertEqual(0, s.findMin([0, 1, 2, 4, 5]))
+        self.assertEqual(0, s.findMin([4, 5, 6, 7, 0, 1, 2]))
