@@ -216,3 +216,9 @@ class TestLeetSolution(TestCase):
         self.assertEqual(123, s.reverse(321))
         self.assertEqual(1, s.reverse(100))
         self.assertEqual(-134, s.reverse(-431))
+
+    def test_convert(self):
+        s = LeetSolution()
+        self.assertEqual("abcds", s.convert("abcds", 1))
+        self.assertEqual("PAHNAPLSIIGYIR", s.convert("PAYPALISHIRING", 3))
+        self.assertEqual("PINALSIGYAHRPI", s.convert("PAYPALISHIRING", 4))

@@ -443,3 +443,26 @@ class LeetSolution:
             return 0
         else:
             return result
+
+    #ZigZag Conversion
+    #More Attention!
+    #Use varible step to control loop varible row to move between two edges
+    #Find a new way to intialize multiple dimension array in Python
+    def convert(self, s, nRows):
+        if nRows <= 1:
+            return s
+        result = []
+        for i in range(nRows):
+            result.append("")
+        row, step = 0, 1
+        for i in range(len(s)):
+            result[row] += s[i]
+            if row == 0:
+                step = 1
+            elif row == nRows - 1:
+                step = -1
+            row += step
+        s = ""
+        for i in range(nRows):
+            s += result[i]
+        return s
