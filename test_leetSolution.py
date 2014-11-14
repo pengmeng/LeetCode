@@ -190,3 +190,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual("1", s.longestCommonPrefix(["1"]))
         self.assertEqual("123", s.longestCommonPrefix(["1234", "123"]))
         self.assertEqual("abc", s.longestCommonPrefix(["abcdef", "abcde", "abcdtg", "abcfff"]))
+
+    def test_isPalindromeNumber(self):
+        s = LeetSolution()
+        self.assertTrue(s.isPalindromeNumber(1))
+        self.assertTrue(s.isPalindromeNumber(121))
+        self.assertTrue(s.isPalindromeNumber(543212345))
+        self.assertFalse(s.isPalindromeNumber(123))

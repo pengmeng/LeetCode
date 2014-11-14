@@ -368,6 +368,8 @@ class LeetSolution:
             pred.next = pred.next.next
         return head
 
+    #Trie can be used to solve this problem but I'm not sure about efficiency yet
+    #Will try later
     def longestCommonPrefix(self, strs):
         index, length = 1, len(strs)
         if length == 0:
@@ -386,3 +388,14 @@ class LeetSolution:
                 break
             index += 1
         return string1[0:index]
+
+    #Palindrome Number
+    #Attention here! If reversed number is overflow, how to sovle?
+    def isPalindromeNumber(self, x):
+        if x < 0:
+            return False
+        temp, rev = x, 0
+        while temp > 0:
+            rev = rev * 10 + temp % 10
+            temp //= 10
+        return rev == x
