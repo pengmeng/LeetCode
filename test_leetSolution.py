@@ -228,3 +228,12 @@ class TestLeetSolution(TestCase):
         self.assertEqual([], s.findMin([]))
         self.assertEqual(0, s.findMin([0, 1, 2, 4, 5]))
         self.assertEqual(0, s.findMin([4, 5, 6, 7, 0, 1, 2]))
+
+    def test_findMinBinarySearch(self):
+        s = LeetSolution()
+        self.assertEqual([], s.findMin([]))
+        self.assertEqual(1, s.findMinBinarySearch([1, 2]))
+        self.assertEqual(1, s.findMinBinarySearch([2, 1]))
+        self.assertEqual(0, s.findMinBinarySearch([0, 1, 2, 4, 5]))
+        self.assertEqual(0, s.findMinBinarySearch([4, 5, 6, 7, 0, 1, 2]))
+        self.assertEqual(1, s.findMinBinarySearch([3, 4, 5, 1, 2]))

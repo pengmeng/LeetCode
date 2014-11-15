@@ -468,9 +468,24 @@ class LeetSolution:
         return s
 
     #Find Minimum in Rotated Sorted Array
-    #Use binary search
     def findMin(self, num):
         for i in range(1, len(num)):
             if num[i - 1] > num[i]:
                 return num[i]
         return num and num[0]
+
+    def findMinBinarySearch(self, num):
+        length = len(num)
+        if not num or num[0] < num[length - 1]:
+            return num and num[0]
+        left, right = 0, length - 1
+        mid = (left + right) // 2
+        while left != right:
+            if num[mid] > num[right]:
+                left = mid + 1
+                mid = (left + right) // 2
+            else:
+                #ATTENTION! not right = mid - 1
+                right = mid
+                mid = (left + right) // 2
+        return num[left]
