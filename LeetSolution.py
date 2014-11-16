@@ -489,3 +489,15 @@ class LeetSolution:
                 right = mid
                 mid = (left + right) // 2
         return num[left]
+
+    #Consideration...
+    def maxProduct(self, A):
+        front, back, length = 1, 1, len(A)
+        result = A and A[0]
+        for i in range(length):
+            front *= A[i]
+            back *= A[length-i-1]
+            result = max(result, max(front, back))
+            front = 1 if front == 0 else front
+            back = 1 if back == 0 else back
+        return result
