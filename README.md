@@ -1,8 +1,7 @@
 LeetCode Solutions in Python
-===================================
+-----------------------------------
 
 By Peng Meng
------------------------------------
 
 ### Structure
     Solution codes are in LeetSolution.py
