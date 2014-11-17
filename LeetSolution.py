@@ -501,3 +501,28 @@ class LeetSolution:
             front = 1 if front == 0 else front
             back = 1 if back == 0 else back
         return result
+
+    #Evaluate Reverse Polish Notation
+    #Pay attention to difference of / and // and other similar calculation in Python
+    def evalRPN(self, tokens):
+        index, length = 0, len(tokens)
+        stack = []
+        while index < length:
+            token = tokens[index]
+            if token == '+':
+                stack.append(stack.pop() + stack.pop())
+            elif token == '-':
+                second = stack.pop()
+                stack.append(stack.pop() - second)
+            elif token == '*':
+                stack.append(stack.pop() * stack.pop())
+            elif token == '/':
+                second = stack.pop()
+                stack.append(int(float(stack.pop()) / second))
+            else:
+                stack.append(int(token))
+            index += 1
+        if stack:
+            return stack.pop()
+        else:
+            return stack

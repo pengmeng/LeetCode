@@ -242,3 +242,13 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual([], s.maxProduct([]))
         self.assertEqual(6, s.maxProduct([2, 3, -2, 4]))
+
+    def test_evalRPN(self):
+        s = LeetSolution()
+        self.assertEqual([], s.evalRPN([]))
+        self.assertEqual(5, s.evalRPN(["5"]))
+        self.assertEqual(25, s.evalRPN(["5", "5", "*"]))
+        self.assertEqual(-1, s.evalRPN(["3", "-4", "+"]))
+        self.assertEqual(9, s.evalRPN(["2", "1", "+", "3", "*"]))
+        self.assertEqual(6, s.evalRPN(["4", "13", "5", "/", "+"]))
+        self.assertEqual(22, s.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]))
