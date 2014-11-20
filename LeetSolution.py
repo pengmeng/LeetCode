@@ -526,3 +526,6 @@ class LeetSolution:
             return stack.pop()
         else:
             return stack
+
+    def sortList(self, head):
+        pass
