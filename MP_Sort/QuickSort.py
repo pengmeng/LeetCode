@@ -1,7 +1,5 @@
 __author__ = 'mengpeng'
 
-from ListNode import ListNode
-
 
 def quicksort_array(array, start, end):
     if start < end:
@@ -21,20 +19,21 @@ def partition_array(array, start, end):
     return i+1
 
 
-def quicksort_list(head):
-    pass
+def quicksort_list(head, end):
+    if head and head is not end:
+        par = partition_list(head, end)
+        quicksort_list(head, par)
+        quicksort_list(par.next, end)
 
 
 def partition_list(head, end):
     pivot = head.val
-    curr = head
-    pred = ListNode()
-    pred.next = head
-    while curr.next is not end:
-        if curr.next.val <= pivot:
-            exchangenode(pred, curr)
-            pred = pred.next
-
-
-def exchangenode(pred1, pred2):
-    pass
+    i = head
+    j = head.next
+    while j is not end:
+        if j.val <= pivot:
+            i = i.next
+            i.val, j.val = j.val, i.val
+        j = j.next
+    head.val, i.val = i.val, head.val
+    return i
