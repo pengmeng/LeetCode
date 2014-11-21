@@ -265,3 +265,17 @@ class TestLeetSolution(TestCase):
         A = ListNode.makeList([1, 2, 3, 4, 5])
         A.tail.next = A.next.next
         self.assertTrue(s.hasCycle(A))
+
+    def test_detectCycle(self):
+        s = LeetSolution()
+        self.assertEqual(None, s.detectCycle(None))
+        A = ListNode.makeList([1])
+        self.assertEqual(None, s.detectCycle(A))
+        A = ListNode.makeList([1, 2, 3, 4, 5])
+        self.assertEqual(None, s.detectCycle(A))
+        A = ListNode.makeList([1])
+        A.next = A
+        self.assertEqual(1, s.detectCycle(A).val)
+        A = ListNode.makeList([1, 2, 3, 4, 5])
+        A.tail.next = A.next.next
+        self.assertEqual(3, s.detectCycle(A).val)
