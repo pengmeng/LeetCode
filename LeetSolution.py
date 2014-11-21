@@ -529,3 +529,15 @@ class LeetSolution:
 
     def sortList(self, head):
         pass
+
+    #Linked List Cycle
+    def hasCycle(self, head):
+        if not head:
+            return False
+        slower, faster = head, head
+        while slower and faster and faster.next:
+            slower = slower.next
+            faster = faster.next.next
+            if slower is faster:
+                return True
+        return False

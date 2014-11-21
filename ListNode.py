@@ -5,6 +5,7 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+        self.tail = None
 
     @staticmethod
     def makeList(array):
@@ -16,6 +17,7 @@ class ListNode:
             item = ListNode(array.pop(0))
             pred.next = item
             pred = item
+        head.tail = pred
         return head
 
     def show(self):

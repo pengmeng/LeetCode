@@ -251,4 +251,17 @@ class TestLeetSolution(TestCase):
         self.assertEqual(-1, s.evalRPN(["3", "-4", "+"]))
         self.assertEqual(9, s.evalRPN(["2", "1", "+", "3", "*"]))
         self.assertEqual(6, s.evalRPN(["4", "13", "5", "/", "+"]))
-        self.assertEqual(22, s.evalRPN(["10","6","9","3","+","-11","*","/","*","17","+","5","+"]))
+        self.assertEqual(22, s.evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]))
+
+    def test_hasCycle(self):
+        s = LeetSolution()
+        self.assertFalse(s.hasCycle(None))
+        A = ListNode.makeList([1])
+        self.assertFalse(s.hasCycle(A))
+        A.next = A
+        self.assertTrue(s.hasCycle(A))
+        A = ListNode.makeList([1, 2, 3, 4, 5])
+        self.assertFalse(s.hasCycle(A))
+        A = ListNode.makeList([1, 2, 3, 4, 5])
+        A.tail.next = A.next.next
+        self.assertTrue(s.hasCycle(A))
