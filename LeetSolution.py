@@ -559,3 +559,8 @@ class LeetSolution:
                     slower = slower.next
                     faster = faster.next
         return None
+
+    #In python3 reduce() function has been move to functools
+    def singleNumber(self, A):
+        import functools
+        return A and functools.reduce(lambda x, y: x ^ y, A)

@@ -279,3 +279,9 @@ class TestLeetSolution(TestCase):
         A = ListNode.makeList([1, 2, 3, 4, 5])
         A.tail.next = A.next.next
         self.assertEqual(3, s.detectCycle(A).val)
+
+    def test_singleNumber(self):
+        s = LeetSolution()
+        self.assertEqual([], s.singleNumber([]))
+        self.assertEqual(5, s.singleNumber([2, 5, 2]))
+        self.assertEqual(1, s.singleNumber([2, 5, 2, 5, 6, 1, 6, 10, 10]))
