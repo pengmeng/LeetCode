@@ -1,5 +1,6 @@
 __author__ = 'mengpeng'
 from ListNode import ListNode
+import MP_Sort.InsertSort
 
 
 class LeetSolution:
@@ -564,3 +565,6 @@ class LeetSolution:
     def singleNumber(self, A):
         import functools
         return A and functools.reduce(lambda x, y: x ^ y, A)
+
+    def insertionSortList(self, head):
+        return MP_Sort.InsertSort.insertsort_list(head)
