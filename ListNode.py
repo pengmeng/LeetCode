@@ -1,7 +1,7 @@
 __author__ = 'mengpeng'
 
 
-class ListNode:
+class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
@@ -19,6 +19,14 @@ class ListNode:
             pred = item
         head.tail = pred
         return head
+
+    def __str__(self):
+        head = self
+        result = []
+        while head:
+            result.append(head.val)
+            head = head.next
+        return result.__str__()
 
     def show(self):
         head = self

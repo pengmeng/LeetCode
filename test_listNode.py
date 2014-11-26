@@ -7,8 +7,9 @@ __author__ = 'mengpeng'
 
 class TestListNode(TestCase):
 
-    @unittest.skip("success")
+    @unittest.skip("succ")
     def test_show(self):
         array = [1, 2, 3, 4, 5]
         head = ListNode.makeList(array)
         head.show()
+        print(head)
