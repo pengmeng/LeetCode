@@ -28,6 +28,16 @@ class ListNode(object):
             head = head.next
         return result.__str__()
 
+    #add exception with invalid input
+    def __getitem__(self, item):
+        if item < 0:
+            return None
+        index, head = item, self
+        while index > 0 and head:
+            head = head.next
+            index -= 1
+        return head
+
     def show(self):
         head = self
         result = []
