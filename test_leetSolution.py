@@ -285,3 +285,8 @@ class TestLeetSolution(TestCase):
         self.assertEqual([], s.singleNumber([]))
         self.assertEqual(5, s.singleNumber([2, 5, 2]))
         self.assertEqual(1, s.singleNumber([2, 5, 2, 5, 6, 1, 6, 10, 10]))
+
+    def test_singleNumber2(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.singleNumber2([1]))
+        self.assertEqual(1, s.singleNumber2([1, 2, 3, 2, 3, 2, 3, 5, 5, 5]))

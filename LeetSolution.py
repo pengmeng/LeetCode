@@ -568,3 +568,12 @@ class LeetSolution:
 
     def insertionSortList(self, head):
         return MP_Sort.InsertSort.insertsort_list(head)
+
+    #Such a perfect algorithm
+    #I take it from dicussion
+    def singleNumber2(self, A):
+        ones, twos = 0, 0
+        for item in A:
+            ones = (ones ^ item) & ~twos
+            twos = (twos ^ item) & ~ones
+        return ones
