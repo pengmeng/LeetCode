@@ -20,3 +20,14 @@ def insertsort_list(head):
         else:
             curr = curr.next
     return pred.next
+
+
+def insertsort_array(array):
+    length = len(array)
+    for j in range(1, length):
+        key = array[j]
+        i = j - 1
+        while i >= 0 and array[i] > key:
+            array[i+1] = array[i]
+            i -= 1
+        array[i+1] = key

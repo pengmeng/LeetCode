@@ -577,3 +577,6 @@ class LeetSolution:
             ones = (ones ^ item) & ~twos
             twos = (twos ^ item) & ~ones
         return ones
+
+    def reorderList(self, head):
+        pass
