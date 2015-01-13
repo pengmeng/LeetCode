@@ -23,8 +23,7 @@ def insertsort_list(head):
 
 
 def insertsort_array(array):
-    length = len(array)
-    for j in range(1, length):
+    for j in range(1, len(array)):
         key = array[j]
         i = j - 1
         while i >= 0 and array[i] > key:
