@@ -304,6 +304,7 @@ class TestLeetSolution(TestCase):
             r.append(i.next())
         self.assertEqual([1, 2, 3, 4, 5, 6], r)
 
+    @unittest.skip("succ")
     def test_wordBreak(self):
         s = LeetSolution()
         in_s = "leetcode"
@@ -312,3 +313,10 @@ class TestLeetSolution(TestCase):
         self.assertTrue(s.wordBreak("a", ["a"]))
         self.assertTrue(s.wordBreak("aa", ["a"]))
         self.assertFalse(s.wordBreak("", []))
+
+    def test_wordBreakii(self):
+        s = LeetSolution()
+        print(s.wordBreakii("catsanddog", ["cat", "cats", "and", "sand", "dog"]))
+        print(s.wordBreakii("aaaaaaaaaab", ["a", "aa", "aaa", "aaaa", "aaaaa"]))
+        print(s.wordBreakii("a", []))
+        #print(s.wordBreakii("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", ["a", "aa", "aaa", "aaaa", "aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaaa","aaaaaaaaaaaa"]))

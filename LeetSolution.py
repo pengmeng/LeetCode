@@ -617,8 +617,7 @@ class LeetSolution:
         if not s or not dict or s in dict:
             return s and s in dict
         length = len(s)
-        subseq = [False for x in range(0, length + 1)]
-        subseq[0] = True
+        subseq, subseq[0] = [False for x in range(0, length + 1)], True
         for i in range(1, length + 1):
             for j in range(0, i):
                 if subseq[j]:
@@ -626,3 +625,23 @@ class LeetSolution:
                         subseq[i] = True
                         break
         return subseq[length]
+
+    #Word Break II
+    def wordBreakii(self, s, dict):
+        if not s or not dict:
+            return []
+        length = len(s)
+        subseq, subseq[length] = [False for x in range(0, length + 1)], True
+        subset, subset[length] = [[] for x in range(0, length + 1)], [""]
+        for i in range(length - 1, -1, -1):
+            for j in range(length, i, -1):
+                if subseq[j]:
+                    if s[i:j] in dict:
+                        subseq[i] = True
+                        if subset[j]:
+                            for sufix in subset[j]:
+                                if sufix is "":
+                                    subset[i].append(s[i:j] + sufix)
+                                else:
+                                    subset[i].append(s[i:j] + " " + sufix)
+        return subset[0]
