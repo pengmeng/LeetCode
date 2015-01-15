@@ -290,3 +290,8 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(1, s.singleNumber2([1]))
         self.assertEqual(1, s.singleNumber2([1, 2, 3, 2, 3, 2, 3, 5, 5, 5]))
+
+    def test_largestNumber(self):
+        s = LeetSolution()
+        self.assertEqual("9534330", s.largestNumber([3, 30, 34, 5, 9]))
+        self.assertEqual("0", s.largestNumber([0, 0]))

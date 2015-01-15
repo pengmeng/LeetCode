@@ -1,6 +1,7 @@
 __author__ = 'mengpeng'
 from ListNode import ListNode
 import MP_Sort.InsertSort
+import functools
 
 
 class LeetSolution:
@@ -580,3 +581,9 @@ class LeetSolution:
 
     def reorderList(self, head):
         pass
+
+    def largestNumber(self, num):
+        num_str = [str(x) for x in num]
+        num_str.sort(key=functools.cmp_to_key(lambda x, y: int(x+y) - int(y+x)), reverse=True)
+        result = ''.join(num_str)
+        return result.lstrip('0') or '0'
