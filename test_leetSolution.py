@@ -303,3 +303,12 @@ class TestLeetSolution(TestCase):
         while i.hasNext():
             r.append(i.next())
         self.assertEqual([1, 2, 3, 4, 5, 6], r)
+
+    def test_wordBreak(self):
+        s = LeetSolution()
+        in_s = "leetcode"
+        in_dict = ["leet", "code"]
+        self.assertTrue(s.wordBreak(in_s, in_dict))
+        self.assertTrue(s.wordBreak("a", ["a"]))
+        self.assertTrue(s.wordBreak("aa", ["a"]))
+        self.assertFalse(s.wordBreak("", []))

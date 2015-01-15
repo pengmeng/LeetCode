@@ -611,3 +611,18 @@ class LeetSolution:
         # @return an integer, the next smallest number
         def next(self):
             return self.queue.pop(0)
+
+    #Word Break
+    def wordBreak(self, s, dict):
+        if not s or not dict or s in dict:
+            return s and s in dict
+        length = len(s)
+        subseq = [False for x in range(0, length + 1)]
+        subseq[0] = True
+        for i in range(1, length + 1):
+            for j in range(0, i):
+                if subseq[j]:
+                    if s[j:i] in dict:
+                        subseq[i] = True
+                        break
+        return subseq[length]
