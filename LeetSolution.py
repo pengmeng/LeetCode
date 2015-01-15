@@ -587,3 +587,27 @@ class LeetSolution:
         num_str.sort(key=functools.cmp_to_key(lambda x, y: int(x+y) - int(y+x)), reverse=True)
         result = ''.join(num_str)
         return result.lstrip('0') or '0'
+
+    #Binary Search Tree Iterator
+    class BSTIterator:
+        # @param root, a binary search tree's root node
+        def __init__(self, root):
+            self.queue = []
+            stack = [root]
+            while stack:
+                node = stack.pop()
+                while node:
+                    stack.append(node)
+                    node = node.left
+                if stack:
+                    node = stack.pop()
+                    self.queue.append(node.val)
+                    stack.append(node.right)
+
+        # @return a boolean, whether we have a next smallest number
+        def hasNext(self):
+            return self.queue
+
+        # @return an integer, the next smallest number
+        def next(self):
+            return self.queue.pop(0)

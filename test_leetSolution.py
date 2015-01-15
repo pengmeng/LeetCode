@@ -295,3 +295,11 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual("9534330", s.largestNumber([3, 30, 34, 5, 9]))
         self.assertEqual("0", s.largestNumber([0, 0]))
+
+    def test_BSTIterator(self):
+        s = LeetSolution()
+        root = TreeNode.makeTree([3, 1, 4, '#', 2, '#', 5, '#', '#', '#', 6])
+        i, r = s.BSTIterator(root), []
+        while i.hasNext():
+            r.append(i.next())
+        self.assertEqual([1, 2, 3, 4, 5, 6], r)
