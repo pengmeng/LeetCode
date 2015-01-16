@@ -613,6 +613,7 @@ class LeetSolution:
             return self.queue.pop(0)
 
     #Word Break
+    #forward DP
     def wordBreak(self, s, dict):
         if not s or not dict or s in dict:
             return s and s in dict
@@ -627,6 +628,7 @@ class LeetSolution:
         return subseq[length]
 
     #Word Break II
+    #backward DP
     def wordBreakii(self, s, dict):
         if not s or not dict:
             return []
@@ -645,3 +647,16 @@ class LeetSolution:
                                 else:
                                     subset[i].append(s[i:j] + " " + sufix)
         return subset[0]
+
+    #Best Time to Buy and Sell Stock
+    def maxProfit(self, prices):
+        if not prices:
+            return 0
+        curmax, lowest, highest = 0, prices[0], prices[0]
+        for price in prices[1:]:
+            if price > highest:
+                highest = price
+            elif price < lowest:
+                curmax = max(curmax, highest - lowest)
+                highest, lowest = price, price
+        return max(curmax, highest - lowest)

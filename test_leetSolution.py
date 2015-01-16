@@ -314,9 +314,15 @@ class TestLeetSolution(TestCase):
         self.assertTrue(s.wordBreak("aa", ["a"]))
         self.assertFalse(s.wordBreak("", []))
 
+    @unittest.skip("succ")
     def test_wordBreakii(self):
         s = LeetSolution()
         print(s.wordBreakii("catsanddog", ["cat", "cats", "and", "sand", "dog"]))
         print(s.wordBreakii("aaaaaaaaaab", ["a", "aa", "aaa", "aaaa", "aaaaa"]))
         print(s.wordBreakii("a", []))
-        #print(s.wordBreakii("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", ["a", "aa", "aaa", "aaaa", "aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaaa","aaaaaaaaaaaa"]))
+
+    def test_maxProfit(self):
+        s = LeetSolution()
+        #self.assertEqual(6, s.maxProfit([6, 1, 3, 2, 4, 7]))
+        #self.assertEqual(0, s.maxProfit([5, 4, 3, 2, 1]))
+        self.assertEqual(3, s.maxProfit([4,7,2,1]))
