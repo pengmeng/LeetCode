@@ -323,6 +323,6 @@ class TestLeetSolution(TestCase):
 
     def test_maxProfit(self):
         s = LeetSolution()
-        #self.assertEqual(6, s.maxProfit([6, 1, 3, 2, 4, 7]))
-        #self.assertEqual(0, s.maxProfit([5, 4, 3, 2, 1]))
+        self.assertEqual(6, s.maxProfit([6, 1, 3, 2, 4, 7]))
+        self.assertEqual(0, s.maxProfit([5, 4, 3, 2, 1]))
         self.assertEqual(3, s.maxProfit([4,7,2,1]))
