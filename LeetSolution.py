@@ -660,3 +660,19 @@ class LeetSolution:
                 curmax = max(curmax, highest - lowest)
                 highest, lowest = price, price
         return max(curmax, highest - lowest)
+
+    #Unique Paths
+    def uniquePaths(self, m, n):
+        solution = [[1 if x == 0 or y == 0 else 0 for x in range(n)] for y in range(m)]
+        for i in range(1, m):
+            for j in range(1, n):
+                solution[i][j] = solution[i-1][j] + solution[i][j-1]
+        return solution[m - 1][n - 1]
+
+    #Unique Paths w/ 1D array DP
+    def uniquePaths2(self, m, n):
+        solution = [1 for x in range(n)]
+        for i in range(1, m):
+            for j in range(1, n):
+                solution[j] += solution[j - 1]
+        return solution[n - 1]

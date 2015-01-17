@@ -325,4 +325,14 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(6, s.maxProfit([6, 1, 3, 2, 4, 7]))
         self.assertEqual(0, s.maxProfit([5, 4, 3, 2, 1]))
-        self.assertEqual(3, s.maxProfit([4,7,2,1]))
+        self.assertEqual(3, s.maxProfit([4, 7, 2, 1]))
+
+    def test_uniquePaths(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.uniquePaths(1, 1))
+        self.assertEqual(1, s.uniquePaths(1, 2))
+
+    def test_uniquePaths2(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.uniquePaths2(1, 1))
+        self.assertEqual(1, s.uniquePaths2(1, 2))
