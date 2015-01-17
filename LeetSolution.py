@@ -681,7 +681,6 @@ class LeetSolution:
     def uniquePathsWithObstacles(self, obstacleGrid):
         m, n = len(obstacleGrid), len(obstacleGrid[0])
         solution = [[0 for x in range(n+1)] for y in range(m+1)]
-        solution[1][1] = 1 - obstacleGrid[0][0]
         for i in range(1, m+1):
             for j in range(1, n+1):
                 if obstacleGrid[i-1][j-1] == 1:
@@ -691,3 +690,16 @@ class LeetSolution:
                 else:
                     solution[i][j] = solution[i-1][j] + solution[i][j-1]
         return solution[m][n]
+
+    #Unique Paths II w/ 1D array DP
+    def uniquePathsWithObstacles2(self, obstacleGrid):
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
+        solution = [0 for x in range(n)]
+        solution[0] = 1
+        for i in range(0, m):
+            for j in range(0, n):
+                if obstacleGrid[i][j] == 1:
+                    solution[j] = 0
+                elif j > 0:
+                    solution[j] += solution[j - 1]
+        return solution[n - 1]

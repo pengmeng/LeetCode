@@ -343,3 +343,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.uniquePathsWithObstacles([[0, 0]]))
         self.assertEqual(0, s.uniquePathsWithObstacles([[1, 0]]))
         self.assertEqual(0, s.uniquePathsWithObstacles([[0, 0], [1, 1], [0, 0]]))
+
+    def test_uniquePathsWithObstacles2(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.uniquePathsWithObstacles2([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
+        self.assertEqual(1, s.uniquePathsWithObstacles2([[0, 0]]))
+        self.assertEqual(0, s.uniquePathsWithObstacles2([[1, 0]]))
+        self.assertEqual(0, s.uniquePathsWithObstacles2([[0, 0], [1, 1], [0, 0]]))
