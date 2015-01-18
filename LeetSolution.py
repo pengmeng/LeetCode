@@ -712,3 +712,18 @@ class LeetSolution:
             for j in range(i + 1):
                 result[j] = triangle[i][j] + min(result[j], result[j + 1])
         return result[0]
+
+    #Decode Ways
+    def numDecodings(self, s):
+        length = len(s)
+        if length == 0:
+            return 0
+        result = [0 for x in range(length + 1)]
+        result[0] = 1
+        result[1] = 0 if s[0] is '0' else 1
+        for i in range(1, length):
+            if s[i] is not '0':
+                result[i + 1] += result[i]
+            if int(s[i - 1:i + 1]) <= 26 and s[i - 1] is not '0':
+                result[i + 1] += result[i - 1]
+        return result[length]

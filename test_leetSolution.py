@@ -357,3 +357,15 @@ class TestLeetSolution(TestCase):
         self.assertEqual(5, s.minimumTotal([[2], [3, 5]]))
         self.assertEqual(11, s.minimumTotal([[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]))
         self.assertEqual(-1, s.minimumTotal([[-1], [2, 3], [1, -1, -3]]))
+
+    def test_numDecodings(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.numDecodings(""))
+        self.assertEqual(0, s.numDecodings("0"))
+        self.assertEqual(0, s.numDecodings("00"))
+        self.assertEqual(0, s.numDecodings("100"))
+        self.assertEqual(1, s.numDecodings("101"))
+        self.assertEqual(1, s.numDecodings("10"))
+        self.assertEqual(1, s.numDecodings("8"))
+        self.assertEqual(2, s.numDecodings("12"))
+        self.assertEqual(3, s.numDecodings("1234"))
