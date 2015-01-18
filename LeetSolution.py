@@ -727,3 +727,20 @@ class LeetSolution:
             if int(s[i - 1:i + 1]) <= 26 and s[i - 1] is not '0':
                 result[i + 1] += result[i - 1]
         return result[length]
+
+    #Decode Ways w/ O(1) space
+    def numDecodings2(self, s):
+        length = len(s)
+        if length == 0:
+            return 0
+        fisrt = 1
+        second = 0 if s[0] is '0' else 1
+        for i in range(1, length):
+            x, y = 0, 0
+            if s[i] is not '0':
+                x = second
+            if int(s[i - 1:i + 1]) <= 26 and s[i - 1] is not '0':
+                y = fisrt
+            fisrt = second
+            second = x + y
+        return second

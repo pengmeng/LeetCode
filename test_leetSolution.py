@@ -369,3 +369,15 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.numDecodings("8"))
         self.assertEqual(2, s.numDecodings("12"))
         self.assertEqual(3, s.numDecodings("1234"))
+
+    def test_numDecodings2(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.numDecodings2(""))
+        self.assertEqual(0, s.numDecodings2("0"))
+        self.assertEqual(0, s.numDecodings2("00"))
+        self.assertEqual(0, s.numDecodings2("100"))
+        self.assertEqual(1, s.numDecodings2("101"))
+        self.assertEqual(1, s.numDecodings2("10"))
+        self.assertEqual(1, s.numDecodings2("8"))
+        self.assertEqual(2, s.numDecodings2("12"))
+        self.assertEqual(3, s.numDecodings2("1234"))
