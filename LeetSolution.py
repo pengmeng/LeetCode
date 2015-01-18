@@ -703,3 +703,12 @@ class LeetSolution:
                 elif j > 0:
                     solution[j] += solution[j - 1]
         return solution[n - 1]
+
+    #Triangle w/ bottom-up DP
+    def minimumTotal(self, triangle):
+        level = len(triangle)
+        result = triangle[level - 1]
+        for i in range(level - 2, -1, -1):
+            for j in range(i + 1):
+                result[j] = triangle[i][j] + min(result[j], result[j + 1])
+        return result[0]

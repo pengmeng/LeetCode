@@ -350,3 +350,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.uniquePathsWithObstacles2([[0, 0]]))
         self.assertEqual(0, s.uniquePathsWithObstacles2([[1, 0]]))
         self.assertEqual(0, s.uniquePathsWithObstacles2([[0, 0], [1, 1], [0, 0]]))
+
+    def test_minimumTotal(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.minimumTotal([[1]]))
+        self.assertEqual(5, s.minimumTotal([[2], [3, 5]]))
+        self.assertEqual(11, s.minimumTotal([[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]))
+        self.assertEqual(-1, s.minimumTotal([[-1], [2, 3], [1, -1, -3]]))
