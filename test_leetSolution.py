@@ -381,3 +381,7 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.numDecodings2("8"))
         self.assertEqual(2, s.numDecodings2("12"))
         self.assertEqual(3, s.numDecodings2("1234"))
+
+    def test_maxSubArray(self):
+        s = LeetSolution()
+        self.assertEqual(6, s.maxSubArray([4, -1, 2, 1]))

@@ -744,3 +744,12 @@ class LeetSolution:
             fisrt = second
             second = x + y
         return second
+
+    #Maximum Subarray
+    def maxSubArray(self, A):
+        finalmax, curmax = A[0], A[0]
+        for i in range(1, len(A)):
+            curmax = max(A[i], curmax + A[i])
+            if curmax > finalmax:
+                finalmax = curmax
+        return finalmax
