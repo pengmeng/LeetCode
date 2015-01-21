@@ -389,3 +389,10 @@ class TestLeetSolution(TestCase):
     def test_minPathSum(self):
         s = LeetSolution()
         self.assertEqual(3, s.minPathSum([[1, 2], [1, 1]]))
+
+    def test_longestValidParentheses(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.longestValidParentheses("(()"))
+        self.assertEqual(4, s.longestValidParentheses(")()())"))
+        self.assertEqual(2, s.longestValidParentheses("()(()"))
+        self.assertEqual(6, s.longestValidParentheses("(()())"))

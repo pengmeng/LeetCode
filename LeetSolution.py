@@ -769,3 +769,19 @@ class LeetSolution:
                 else:
                     solution[j] = min(solution[j - 1], solution[j]) + grid[i][j]
         return solution[n - 1]
+
+    #Longest Valid Parentheses
+    def longestValidParentheses(self, s):
+        length = len(s)
+        longest, curmax = [0 for x in range(length)], 0
+        for i in range(1, length):
+            if s[i] is ')':
+                if s[i - 1] is '(':
+                    longest[i] = longest[i - 2] + 2 if i - 2 >= 0 else 2
+                    curmax = max(curmax, longest[i])
+                else:
+                    prematch = i - longest[i - 1] - 1
+                    if prematch >= 0 and s[prematch] is '(':
+                        longest[i] = longest[i - 1] + 2 + (longest[prematch - 1] if prematch - 1 >= 0 else 0)
+                        curmax = max(curmax, longest[i])
+        return curmax
