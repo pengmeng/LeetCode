@@ -760,11 +760,11 @@ class LeetSolution:
         solution = [0 for x in range(n)]
         for i in range(m):
             for j in range(n):
-                if i == 0 and j == 0:
+                if i is 0 and j is 0:
                     solution[j] = grid[i][j]
-                elif j == 0:
+                elif j is 0:
                     solution[j] += grid[i][j]
-                elif i == 0:
+                elif i is 0:
                     solution[j] = solution[j - 1] + grid[i][j]
                 else:
                     solution[j] = min(solution[j - 1], solution[j]) + grid[i][j]
