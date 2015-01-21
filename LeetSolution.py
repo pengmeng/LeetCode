@@ -753,3 +753,19 @@ class LeetSolution:
             if curmax > finalmax:
                 finalmax = curmax
         return finalmax
+
+    #Minimum Path Sum
+    def minPathSum(self, grid):
+        m, n = len(grid), len(grid[0])
+        solution = [0 for x in range(n)]
+        for i in range(m):
+            for j in range(n):
+                if i == 0 and j == 0:
+                    solution[j] = grid[i][j]
+                elif j == 0:
+                    solution[j] += grid[i][j]
+                elif i == 0:
+                    solution[j] = solution[j - 1] + grid[i][j]
+                else:
+                    solution[j] = min(solution[j - 1], solution[j]) + grid[i][j]
+        return solution[n - 1]

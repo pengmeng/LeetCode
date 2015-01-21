@@ -385,3 +385,7 @@ class TestLeetSolution(TestCase):
     def test_maxSubArray(self):
         s = LeetSolution()
         self.assertEqual(6, s.maxSubArray([4, -1, 2, 1]))
+
+    def test_minPathSum(self):
+        s = LeetSolution()
+        self.assertEqual(3, s.minPathSum([[1, 2], [1, 1]]))
