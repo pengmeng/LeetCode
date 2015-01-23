@@ -396,3 +396,8 @@ class TestLeetSolution(TestCase):
         self.assertEqual(4, s.longestValidParentheses(")()())"))
         self.assertEqual(2, s.longestValidParentheses("()(()"))
         self.assertEqual(6, s.longestValidParentheses("(()())"))
+
+    def test_canJump(self):
+        s = LeetSolution()
+        self.assertTrue(s.canJump([2, 3, 1, 1, 4]))
+        self.assertFalse(s.canJump([3, 2, 1, 0, 4]))

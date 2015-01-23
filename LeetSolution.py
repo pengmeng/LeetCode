@@ -811,3 +811,19 @@ class LeetSolution:
                 need += remain
                 start, remain = i + 1, 0
         return -1 if remain + need < 0 else start
+
+    #Best Time to Buy and Sell Stock II
+    def maxProfit2(self, prices):
+        total = 0
+        for i in range(len(prices) - 1):
+            if prices[i + 1] > prices[i]:
+                total += prices[i + 1] - prices[i]
+        return total
+
+    #Jump Game
+    def canJump(self, A):
+        reach, length, i = 0, len(A), 0
+        while i < length and i <= reach:
+            reach = reach if i + A[i] <= reach else i + A[i]
+            i += 1
+        return i == length
