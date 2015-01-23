@@ -785,3 +785,19 @@ class LeetSolution:
                         longest[i] = longest[i - 1] + 2 + (longest[prematch - 1] if prematch - 1 >= 0 else 0)
                         curmax = max(curmax, longest[i])
         return curmax
+
+    #Unique Binary Search Trees
+    def numTrees(self, n):
+        result = [0 for x in range(n + 1)]
+        result[0], result[1] = 1, 1
+        for i in range(2, n + 1):
+            for j in range(0, i):
+                result[i] += result[j] * result[i - j - 1]
+        return result[n]
+
+    #Unique Binary Search Trees w/ CATALAN NUMBER
+    def numTrees2(self, n):
+        result = 1
+        for i in range(1, n + 1):
+            result = result * 2 * (2 * i - 1) / (i + 1)
+        return result
