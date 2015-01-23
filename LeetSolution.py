@@ -801,3 +801,13 @@ class LeetSolution:
         for i in range(1, n + 1):
             result = result * 2 * (2 * i - 1) / (i + 1)
         return result
+
+    #Gas Station
+    def canCompleteCircuit(self, gas, cost):
+        start, remain, need = 0, 0, 0
+        for i in range(len(gas)):
+            remain = remain + gas[i] - cost[i]
+            if remain < 0:
+                need += remain
+                start, remain = i + 1, 0
+        return -1 if remain + need < 0 else start
