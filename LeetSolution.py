@@ -866,3 +866,20 @@ class LeetSolution:
                 return first + 1, i + 1
             else:
                 table[num[i]] = i
+
+    #Add Two Numbers
+    def addTwoNumbers(self, l1, l2):
+        result, carry = ListNode(0), 0
+        pt = result
+        while l1 or l2 or carry:
+            pt.next = ListNode(carry)
+            pt = pt.next
+            if l1:
+                pt.val += l1.val
+                l1 = l1.next
+            if l2:
+                pt.val += l2.val
+                l2 = l2.next
+            carry = pt.val // 10
+            pt.val %= 10
+        return result.next

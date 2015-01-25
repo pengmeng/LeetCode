@@ -419,3 +419,9 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual((1, 2), s.twoSum([2, 7, 11, 15], 9))
         self.assertEqual((2, 3), s.twoSum([3, 2, 4], 6))
+
+    def test_addTwoNumbers(self):
+        s = LeetSolution()
+        l1 = ListNode.makeList([2, 4, 3])
+        l2 = ListNode.makeList([5, 6, 4])
+        print(s.addTwoNumbers(l1, l2))
