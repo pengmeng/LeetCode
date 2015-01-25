@@ -411,6 +411,11 @@ class TestLeetSolution(TestCase):
     def test_jump(self):
         s = LeetSolution()
         self.assertEqual(2, s.jump([2, 3, 1, 1, 4]))
-        self.assertEqual(99, s.jump([1]*100))
-        self.assertEqual(499, s.jump([1]*500))
-        self.assertEqual(24999, s.jump([1]*25000))
+        self.assertEqual(99, s.jump([1] * 100))
+        self.assertEqual(499, s.jump([1] * 500))
+        self.assertEqual(24999, s.jump([1] * 25000))
+
+    def test_twoSum(self):
+        s = LeetSolution()
+        self.assertEqual((1, 2), s.twoSum([2, 7, 11, 15], 9))
+        self.assertEqual((2, 3), s.twoSum([3, 2, 4], 6))

@@ -856,3 +856,13 @@ class LeetSolution:
                 count += 1
             i += 1
         return count if reach >= length - 1 else -1
+
+    #Two Sum
+    def twoSum(self, num, target):
+        table = {num[0]: 0}
+        for i in range(1, len(num)):
+            first = table.get(target - num[i])
+            if first is not None:
+                return first + 1, i + 1
+            else:
+                table[num[i]] = i
