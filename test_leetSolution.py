@@ -401,3 +401,9 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertTrue(s.canJump([2, 3, 1, 1, 4]))
         self.assertFalse(s.canJump([3, 2, 1, 0, 4]))
+
+    def test_candy(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.candy([1]))
+        self.assertEqual(4, s.candy([1, 2, 2]))
+        self.assertEqual(6, s.candy([1, 2, 3]))

@@ -827,3 +827,18 @@ class LeetSolution:
             reach = reach if i + A[i] <= reach else i + A[i]
             i += 1
         return i == length
+
+    #Candy
+    def candy(self, ratings):
+        length, count = len(ratings), [1]
+        if length < 2:
+            return length
+        for i in range(1, length):
+            if ratings[i] > ratings[i - 1]:
+                count.append(count[i - 1] + 1)
+            else:
+                count.append(1)
+        for i in range(length - 1, 0, -1):
+            if ratings[i - 1] > ratings[i]:
+                count[i - 1] = max(count[i] + 1, count[i - 1])
+        return sum(count)
