@@ -407,3 +407,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.candy([1]))
         self.assertEqual(4, s.candy([1, 2, 2]))
         self.assertEqual(6, s.candy([1, 2, 3]))
+
+    def test_jump(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.jump([2, 3, 1, 1, 4]))
+        self.assertEqual(99, s.jump([1]*100))
+        self.assertEqual(499, s.jump([1]*500))
+        self.assertEqual(24999, s.jump([1]*25000))

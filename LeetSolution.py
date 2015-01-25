@@ -842,3 +842,17 @@ class LeetSolution:
             if ratings[i - 1] > ratings[i]:
                 count[i - 1] = max(count[i] + 1, count[i - 1])
         return sum(count)
+
+    #Jump Game
+    def jump(self, A):
+        length, i = len(A), 0
+        maxreach, reach, count = 0, 0, 0
+        while i < length - 1 and i <= reach:
+            maxreach = max(maxreach, i + A[i])
+            if i == reach:
+            #cool stuff here in python integer -5 ~ 257 defined in a array and will be referred to the index
+            #integer out of this range will result in different id() and cannot be compared by is
+                reach = maxreach
+                count += 1
+            i += 1
+        return count if reach >= length - 1 else -1
