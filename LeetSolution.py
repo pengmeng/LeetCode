@@ -883,3 +883,11 @@ class LeetSolution:
             carry = pt.val // 10
             pt.val %= 10
         return result.next
+
+    #Anagrams
+    def anagrams(self, strs):
+        import collections
+        d = collections.defaultdict(list)
+        for s in strs:
+            d[tuple(sorted(s))].append(s)
+        return [s for group in d.values() if len(group) > 1 for s in group]
