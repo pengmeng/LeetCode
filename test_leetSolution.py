@@ -1,8 +1,10 @@
 import unittest
+import copy
 from unittest import TestCase
 from LeetSolution import LeetSolution
 from TreeNode import TreeNode
 from ListNode import ListNode
+from random import randint
 
 __author__ = 'mengpeng'
 
@@ -426,3 +428,25 @@ class TestLeetSolution(TestCase):
         l1 = ListNode.makeList([2, 4, 3])
         l2 = ListNode.makeList([5, 6, 4])
         print(s.addTwoNumbers(l1, l2))
+
+    def test_mergeKLists(self):
+        s = LeetSolution()
+        values = [sorted([randint(0, 100) for x in range(0, 50)]) for x in range(0, 7)]
+        new = copy.deepcopy(values)
+        lists = [ListNode.makeList(value) for value in new]
+        result = []
+        for v in values:
+            result.extend(v)
+        result.sort()
+        self.assertEqual(result, s.mergeKLists(lists).toarray())
+
+    def test_mergeKLists2(self):
+        s = LeetSolution()
+        values = [sorted([randint(0, 100) for x in range(0, 50)]) for x in range(0, 7)]
+        new = copy.deepcopy(values)
+        lists = [ListNode.makeList(value) for value in new]
+        result = []
+        for v in values:
+            result.extend(v)
+        result.sort()
+        self.assertEqual(result, s.mergeKLists2(lists).toarray())

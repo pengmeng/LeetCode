@@ -891,3 +891,39 @@ class LeetSolution:
         for s in strs:
             d[tuple(sorted(s))].append(s)
         return [s for group in d.values() if len(group) > 1 for s in group]
+
+    #Merge k Sorted Lists
+    #Divide-and-Conquer
+    def mergeKLists(self, lists):
+        length = len(lists)
+        if length == 0:
+            return None
+        if length == 1:
+            return lists[0]
+        pivot = length // 2
+        left = self.mergeKLists(lists[0: pivot])
+        right = self.mergeKLists(lists[pivot:])
+        tail = head = ListNode(0)
+        while left or right:
+            if not left or (right and right.val < left.val):
+                tail.next = ListNode(right.val)
+                right = right.next
+            else:
+                tail.next = ListNode(left.val)
+                left = left.next
+            tail = tail.next
+        return head.next
+
+    #Merge k Sorted Lists
+    #heap
+    def mergeKLists2(self, lists):
+        import heapq
+        heap = [node for node in lists if node]
+        tail = head = ListNode(0)
+        heapq.heapify(heap)
+        while heap:
+            tail.next = heapq.heappop(heap)
+            tail = tail.next
+            if tail.next:
+                heapq.heappush(heap, tail.next)
+        return head.next
