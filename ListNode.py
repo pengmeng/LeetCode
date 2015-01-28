@@ -38,6 +38,12 @@ class ListNode(object):
             index -= 1
         return head
 
+    def __gt__(self, other):
+        return self.val > other
+
+    def __lt__(self, other):
+        return self.val < other
+
     def show(self):
         print(self.toarray())
 
