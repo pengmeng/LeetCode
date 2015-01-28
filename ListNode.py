@@ -39,9 +39,12 @@ class ListNode(object):
         return head
 
     def show(self):
+        print(self.toarray())
+
+    def toarray(self):
         head = self
         result = []
         while head:
             result.append(head.val)
             head = head.next
-        print(result)
+        return result
