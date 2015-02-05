@@ -5,6 +5,7 @@ from LeetSolution import LeetSolution
 from TreeNode import TreeNode
 from ListNode import ListNode
 from random import randint
+from random import shuffle
 
 __author__ = 'mengpeng'
 
@@ -450,3 +451,10 @@ class TestLeetSolution(TestCase):
             result.extend(v)
         result.sort()
         self.assertEqual(result, s.mergeKLists2(lists).toarray())
+
+    def test_sortColors(self):
+        s = LeetSolution()
+        A = [0]*50 + [1]*50 + [2]*50
+        shuffle(A)
+        s.sortColors(A)
+        self.assertEqual([0]*A.count(0)+[1]*A.count(1)+[2]*A.count(2), A)

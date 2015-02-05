@@ -927,3 +927,19 @@ class LeetSolution:
             if tail.next:
                 heapq.heappush(heap, tail.next)
         return head.next
+
+    #Sort Colors
+    def sortColors(self, A):
+        low, high, i = 0, len(A) - 1, 0
+        while i <= high:
+            if A[i] == 0:
+                A[i] = A[low]
+                A[low] = 0
+                i += 1
+                low += 1
+            elif A[i] == 2:
+                A[i] = A[high]
+                A[high] = 2
+                high -= 1
+            else:
+                i += 1
