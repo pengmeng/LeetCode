@@ -4,6 +4,7 @@ from unittest import TestCase
 from LeetSolution import LeetSolution
 from TreeNode import TreeNode
 from ListNode import ListNode
+from interval import Interval
 from random import randint
 from random import shuffle
 
@@ -461,5 +462,15 @@ class TestLeetSolution(TestCase):
 
     def test_maximumGap(self):
         s = LeetSolution()
-        A = [15252,16764,27963,7817,26155,20757,3478,22602,20404,6739,16790,10588,16521,6644,20880,15632,27078,25463,20124,15728,30042,16604,17223,4388,23646,32683,23688,12439,30630,3895,7926,22101,32406,21540,31799,3768,26679,21799,23740]
+        A = [15252, 16764, 27963, 7817, 26155, 20757, 3478, 22602, 20404, 6739, 16790, 10588, 16521, 6644, 20880, 15632,
+             27078, 25463, 20124, 15728, 30042, 16604, 17223, 4388, 23646, 32683, 23688, 12439, 30630, 3895, 7926,
+             22101, 32406, 21540, 31799, 3768, 26679, 21799, 23740]
         self.assertEqual(2901, s.maximumGap(A))
+
+
+    def test_mergeinterval(self):
+        s = LeetSolution()
+        A = [Interval(1, 3), Interval(2, 6), Interval(8, 10), Interval(15, 18)]
+        r = s.mergeinterval(A)
+        for i in r:
+            print(i, end=' ')

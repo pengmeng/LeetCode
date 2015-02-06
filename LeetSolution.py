@@ -2,6 +2,7 @@ __author__ = 'mengpeng'
 from ListNode import ListNode
 import MP_Sort.InsertSort
 import functools
+from interval import Interval
 
 
 class LeetSolution:
@@ -964,3 +965,16 @@ class LeetSolution:
                 maxgap = max(maxgap, minbacket[i] - prev)
                 prev = maxbacket[i]
         return max(maxgap, maxv - prev)
+
+    #Merge Intervals
+    def mergeinterval(self, intervals):
+        if not intervals:
+            return []
+        intervals.sort(key=lambda x: x.start)
+        result = [intervals[0]]
+        for each in intervals[1:]:
+            if each.start <= result[-1].end:
+                result[-1].end = max(each.end, result[-1].end)
+            else:
+                result.append(each)
+        return result
