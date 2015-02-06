@@ -943,3 +943,24 @@ class LeetSolution:
                 high -= 1
             else:
                 i += 1
+
+    #Maximum Gap
+    def maximumGap(self, num):
+        length = len(num)
+        if length < 2:
+            return 0
+        minv, maxv = min(num), max(num)
+        gap = (maxv - minv - 1) / (length - 1) + 1
+        backetnum = int((maxv - minv) / gap) + 1
+        minbacket, maxbacket = [maxv+1 for x in range(backetnum)], [minv-1 for x in range(backetnum)]
+        for i in range(length):
+            if num[i] != minv and num[i] != maxv:
+                backeti = int((num[i] - minv) / gap)
+                minbacket[backeti] = min(minbacket[backeti], num[i])
+                maxbacket[backeti] = max(maxbacket[backeti], num[i])
+        maxgap, prev = -1, minv
+        for i in range(backetnum):
+            if minbacket[i] != maxv+1 and maxbacket[i] != minv-1:
+                maxgap = max(maxgap, minbacket[i] - prev)
+                prev = maxbacket[i]
+        return max(maxgap, maxv - prev)
