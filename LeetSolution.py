@@ -978,3 +978,17 @@ class LeetSolution:
             else:
                 result.append(each)
         return result
+
+    #Longest Substring Without Repeating Characters
+    def lengthOfLongestSubstring(self, s):
+        start, maxlen = 0, 0
+        used = {}
+        for i in range(len(s)):
+            c = s[i]
+            if c in used and used[c] >= start:
+                start = used[c] + 1
+                used[c] = i
+            else:
+                used[c] = i
+                maxlen = max(maxlen, i - start + 1)
+        return maxlen

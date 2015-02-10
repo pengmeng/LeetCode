@@ -467,10 +467,18 @@ class TestLeetSolution(TestCase):
              22101, 32406, 21540, 31799, 3768, 26679, 21799, 23740]
         self.assertEqual(2901, s.maximumGap(A))
 
-
+    @unittest.skip("succ")
     def test_mergeinterval(self):
         s = LeetSolution()
         A = [Interval(1, 3), Interval(2, 6), Interval(8, 10), Interval(15, 18)]
         r = s.mergeinterval(A)
         for i in r:
             print(i, end=' ')
+
+    def test_lengthOfLongestSubstring(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.lengthOfLongestSubstring(''))
+        self.assertEqual(3, s.lengthOfLongestSubstring('abcabcbb'))
+        self.assertEqual(1, s.lengthOfLongestSubstring('bbbbbbb'))
+        self.assertEqual(8, s.lengthOfLongestSubstring('qwnfenpglqdq'))
+        self.assertEqual(8, s.lengthOfLongestSubstring('qwnfenpglqdq'))
