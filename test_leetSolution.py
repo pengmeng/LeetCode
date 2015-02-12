@@ -482,3 +482,14 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.lengthOfLongestSubstring('bbbbbbb'))
         self.assertEqual(8, s.lengthOfLongestSubstring('qwnfenpglqdq'))
         self.assertEqual(8, s.lengthOfLongestSubstring('qwnfenpglqdq'))
+
+    def test_insertintervals(self):
+        s = LeetSolution()
+        r = s.insertintervals(Interval.fromlist([1, 3, 6, 9]), Interval(2, 5))
+        self.assertEqual([1, 5, 6, 9], Interval.tolist(r))
+        r = s.insertintervals(Interval.fromlist([1, 2, 3, 5, 6, 7, 8, 10, 12, 16]), Interval(4, 9))
+        self.assertEqual([1, 2, 3, 10, 12, 16], Interval.tolist(r))
+
+    def test_findRepeatedDnaSequences(self):
+        s = LeetSolution()
+        print(s.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"))

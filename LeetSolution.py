@@ -992,3 +992,29 @@ class LeetSolution:
                 used[c] = i
                 maxlen = max(maxlen, i - start + 1)
         return maxlen
+
+    #Insert Interval
+    def insertintervals(self, intervals, newInterval):
+        new, result = newInterval, []
+        for i in range(len(intervals)):
+            cur = intervals[i]
+            if cur.end < new.start:
+                result.append(cur)
+            elif cur.start > new.end:
+                result.append(new)
+                return result + intervals[i:]
+            else:
+                new.start = min(cur.start, new.start)
+                new.end = max(cur.end, new.end)
+        result.append(new)
+        return result
+
+    #Repeated DNA Sequences
+    def findRepeatedDnaSequences(self, s):
+        subs, result, length = {}, [], len(s)
+        if length <= 10:
+            return []
+        for i in range(length - 9):
+            sub = s[i:i + 10]
+            subs[sub] = subs.get(sub, 0) + 1
+        return [k for k in iter(subs) if subs[k] > 1]
