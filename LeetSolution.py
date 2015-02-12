@@ -1018,3 +1018,15 @@ class LeetSolution:
             sub = s[i:i + 10]
             subs[sub] = subs.get(sub, 0) + 1
         return [k for k in iter(subs) if subs[k] > 1]
+
+    #strStr() using hash
+    #Known as Rabin-Karp algorithm
+    def strstrhash(self, haystack, needle):
+        nhash, nlen = hash(needle), len(needle)
+        hlen = len(haystack)
+        if nlen == 0:
+            return 0
+        for i in range(hlen - nlen + 1):
+            if hash(haystack[i:i + nlen]) == nhash:
+                return i
+        return -1

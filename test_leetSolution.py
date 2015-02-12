@@ -492,4 +492,13 @@ class TestLeetSolution(TestCase):
 
     def test_findRepeatedDnaSequences(self):
         s = LeetSolution()
-        print(s.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"))
+        #print(s.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"))
+
+    def test_strstrhash(self):
+        s = LeetSolution()
+        self.assertEqual(-1, s.strstrhash("", "abc"))
+        self.assertEqual(0, s.strstrhash("abc", ""))
+        self.assertEqual(0, s.strstrhash("", ""))
+        self.assertEqual(2, s.strstrhash("bcbcdef", "bcd"))
+        self.assertEqual(2, s.strstrhash("ababac", "abac"))
+        self.assertEqual(-1, s.strstrhash("mississippi", "issipi"))
