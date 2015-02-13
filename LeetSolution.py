@@ -1054,3 +1054,29 @@ class LeetSolution:
             if j == nlen:
                 return i - nlen + 1
         return -1
+
+    #Max Points on a Line
+    def maxPoints(self, points):
+        length = len(points)
+        if length <= 2:
+            return length
+        maxpoint = 2
+        for i in range(length - 2):
+            maxcur, same, table = 1, 0, {}
+            for j in range(i+1, length):
+                dx = float(points[j].x) - float(points[i].x)
+                dy = float(points[j].y) - float(points[i].y)
+                if abs(dx) < 0.01 and abs(dy) < 0.01:
+                    same += 1
+                    continue
+                ratio = abs(dy) / (abs(dx) + abs(dy))
+                ratio = str(ratio) if dx * dy > 0 else str(-ratio)
+                if ratio in table:
+                    table[ratio] += 1
+                else:
+                    table[ratio] = 2
+                if maxcur < table[ratio]:
+                    maxcur = table[ratio]
+            maxcur += same
+            maxpoint = max(maxcur, maxpoint)
+        return maxpoint
