@@ -1034,8 +1034,15 @@ class LeetSolution:
     #strStr() using KMP algorithm
     #I have no idea why this is slower than RK on leetcode
     def strstrkmp(self, haystack, needle):
-        kmpn = self.kmpnext(needle)
         hlen, nlen = len(haystack), len(needle)
+        kmpn = [0] * nlen
+        j = 0
+        for i in range(1, nlen):
+            while j > 0 and needle[j] is not needle[i]:
+                j = kmpn[j - 1]
+            if needle[j] is needle[i]:
+                j += 1
+            kmpn[i] = j
         if nlen == 0:
             return 0
         j = 0
@@ -1047,15 +1054,3 @@ class LeetSolution:
             if j == nlen:
                 return i - nlen + 1
         return -1
-
-    def kmpnext(self, s):
-        length = len(s)
-        kmpn = [0] * length
-        j = 0
-        for i in range(1, length):
-            while j > 0 and s[j] is not s[i]:
-                j = kmpn[j - 1]
-            if s[j] is s[i]:
-                j += 1
-            kmpn[i] = j
-        return kmpn
