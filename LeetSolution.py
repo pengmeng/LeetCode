@@ -2,7 +2,7 @@ __author__ = 'mengpeng'
 from ListNode import ListNode
 import MP_Sort.InsertSort
 import functools
-from interval import Interval
+from graph import UndirectedGraphNode
 
 
 class LeetSolution:
@@ -1080,3 +1080,39 @@ class LeetSolution:
             maxcur += same
             maxpoint = max(maxcur, maxpoint)
         return maxpoint
+
+    table = {}
+
+    #Clone Graph w/ DFS recursion
+    def cloneGraph(self, node):
+        if not node:
+            return None
+        start = UndirectedGraphNode(node.label)
+        LeetSolution.table[node] = start
+        for each in node.neighbors:
+            if each in LeetSolution.table:
+                start.neighbors.append(LeetSolution.table[each])
+            else:
+                neighbor = self.cloneGraph(each)
+                start.neighbors.append(neighbor)
+        return start
+
+    #Clone Graph w/ DFS not recursion
+    def cloneGraph2(self, node):
+        if not node:
+            return None
+        visited = {}
+        stack = [node]
+        head = UndirectedGraphNode(node.label)
+        visited[node] = head
+        while stack:
+            cur = stack.pop()
+            for each in cur.neighbors:
+                if not each in visited:
+                    stack.append(each)
+                    newnode = UndirectedGraphNode(each.label)
+                    visited[each] = newnode
+                    visited[cur].neighbors.append(newnode)
+                else:
+                    visited[cur].neighbors.append(visited[each])
+        return head
