@@ -503,10 +503,6 @@ class TestLeetSolution(TestCase):
         self.assertEqual(2, s.strstrhash("ababac", "abac"))
         self.assertEqual(-1, s.strstrhash("mississippi", "issipi"))
 
-    def test_kmpnext(self):
-        s = LeetSolution()
-        print(s.kmpnext('abac'))
-
     def test_strstrkmp(self):
         s = LeetSolution()
         self.assertEqual(-1, s.strstrkmp("", "abc"))
@@ -515,3 +511,9 @@ class TestLeetSolution(TestCase):
         self.assertEqual(2, s.strstrkmp("bcbcdef", "bcd"))
         self.assertEqual(2, s.strstrkmp("ababac", "abac"))
         self.assertEqual(-1, s.strstrkmp("mississippi", "issipi"))
+
+    def test_divide(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.divide(4, 2))
+        self.assertEqual(2, s.divide(10, 4))
+        self.assertEqual(-1, s.divide(1, -1))

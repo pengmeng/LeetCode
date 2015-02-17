@@ -1116,3 +1116,22 @@ class LeetSolution:
                 else:
                     visited[cur].neighbors.append(visited[each])
         return head
+
+    #Divide Two Integers
+    def divide(self, dividend, divisor):
+        positive = (dividend > 0) is (divisor > 0)
+        MIN_INT, MAX_INT = -2147483648, 2147483647
+        if divisor == 0:
+            return MAX_INT
+        dividend, divisor = abs(dividend), abs(divisor)
+        result = 0
+        while dividend >= divisor:
+            temp, factor = divisor, 1
+            while dividend >= temp:
+                dividend -= temp
+                result += factor
+                factor <<= 1
+                temp <<= 1
+        if not positive:
+            result = -result
+        return min(max(MIN_INT, result), MAX_INT)
