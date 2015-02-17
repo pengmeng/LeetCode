@@ -241,6 +241,7 @@ class TestLeetSolution(TestCase):
         self.assertEqual(0, s.findMinBinarySearch([0, 1, 2, 4, 5]))
         self.assertEqual(0, s.findMinBinarySearch([4, 5, 6, 7, 0, 1, 2]))
         self.assertEqual(1, s.findMinBinarySearch([3, 4, 5, 1, 2]))
+        self.assertEqual(1, s.findMinBinarySearch([3, 1, 2]))
 
     def test_maxProduct(self):
         s = LeetSolution()
@@ -524,3 +525,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual(4, s.findPeakElement([1, 2, 3, 4, 5, 3, 2, 1]))
         self.assertEqual(4, s.findPeakElement([1, 2, 3, 4, 5]))
         self.assertEqual(0, s.findPeakElement([5, 4, 3, 2, 1]))
+
+    def test_searchInsert(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.searchInsert([1, 3, 5, 6], 5))
+        self.assertEqual(1, s.searchInsert([1, 3, 5, 6], 2))
+        self.assertEqual(4, s.searchInsert([1, 3, 5, 6], 7))
+        self.assertEqual(0, s.searchInsert([1, 3, 5, 6], 0))

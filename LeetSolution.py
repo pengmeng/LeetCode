@@ -482,15 +482,14 @@ class LeetSolution:
         if not num or num[0] < num[length - 1]:
             return num and num[0]
         left, right = 0, length - 1
-        mid = (left + right) // 2
-        while left != right:
+        while left <= right:
+            mid = (left + right) >> 1
             if num[mid] > num[right]:
                 left = mid + 1
-                mid = (left + right) // 2
+            elif num[mid] > num[left]:
+                right = mid - 1
             else:
-                #ATTENTION! not right = mid - 1
-                right = mid
-                mid = (left + right) // 2
+                return num[mid]
         return num[left]
 
     #Consideration...
@@ -1138,16 +1137,27 @@ class LeetSolution:
 
     #Find Peak Element
     def findPeakElement(self, num):
-        if len(num) == 0:
-            return None
         left, right, length = 0, len(num) - 1, len(num)
-        mid = (left + right) >> 1
-        while left != right:
+        while left <= right:
+            mid = (left + right) >> 1
             if mid + 1 < length and num[mid] < num[mid + 1]:
                 left = mid + 1
             elif mid - 1 >= 0 and num[mid] < num[mid - 1]:
-                right = mid
+                right = mid - 1
             else:
                 return mid
+        return left
+
+    #Search Insert Position
+    def searchInsert(self, A, target):
+        length = len(A)
+        left, right = 0, length - 1
+        while left <= right:
             mid = (left + right) >> 1
+            if A[mid] < target:
+                left = mid + 1
+            elif A[mid] > target:
+                right = mid - 1
+            else:
+                return mid
         return left
