@@ -517,3 +517,10 @@ class TestLeetSolution(TestCase):
         self.assertEqual(2, s.divide(4, 2))
         self.assertEqual(2, s.divide(10, 4))
         self.assertEqual(-1, s.divide(1, -1))
+
+    def test_findPeakElement(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.findPeakElement([1, 2, 3, 1]))
+        self.assertEqual(4, s.findPeakElement([1, 2, 3, 4, 5, 3, 2, 1]))
+        self.assertEqual(4, s.findPeakElement([1, 2, 3, 4, 5]))
+        self.assertEqual(0, s.findPeakElement([5, 4, 3, 2, 1]))

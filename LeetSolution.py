@@ -1135,3 +1135,19 @@ class LeetSolution:
         if not positive:
             result = -result
         return min(max(MIN_INT, result), MAX_INT)
+
+    #Find Peak Element
+    def findPeakElement(self, num):
+        if len(num) == 0:
+            return None
+        left, right, length = 0, len(num) - 1, len(num)
+        mid = (left + right) >> 1
+        while left != right:
+            if mid + 1 < length and num[mid] < num[mid + 1]:
+                left = mid + 1
+            elif mid - 1 >= 0 and num[mid] < num[mid - 1]:
+                right = mid
+            else:
+                return mid
+            mid = (left + right) >> 1
+        return left
