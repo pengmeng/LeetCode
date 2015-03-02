@@ -2,6 +2,7 @@ __author__ = 'mengpeng'
 from ListNode import ListNode
 import MP_Sort.InsertSort
 import functools
+import string
 from graph import UndirectedGraphNode
 
 
@@ -1180,3 +1181,19 @@ class LeetSolution:
             if i % 2:
                 result[i].reverse()
         return result
+
+    #Word Ladder
+    def ladderLength(self, start, end, dict):
+        distance = {start: 1}
+        queue = [start]
+        while queue:
+            word = queue.pop(0)
+            for i in range(len(word)):
+                for l in string.ascii_lowercase:
+                    newword = word[:i] + l + word[i+1:]
+                    if newword == end:
+                        return distance[word] + 1
+                    if newword in dict and newword not in distance:
+                        queue.append(newword)
+                        distance[newword] = distance[word] + 1
+        return 0

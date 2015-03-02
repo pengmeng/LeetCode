@@ -541,3 +541,9 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual([[3], [20, 9], [15, 7]], s.zigzagLevelOrder(TreeNode.makeTree([3, 9, 20, '#', '#', 15, 7])))
         self.assertEqual([[1], [3, 2], [4, 5]], s.zigzagLevelOrder(TreeNode.makeTree([1, 2, 3, 4, '#', '#', 5])))
+
+    def test_ladderLength(self):
+        s = LeetSolution()
+        self.assertEqual(5, s.ladderLength('hit', 'cog', ["hot", "dot", "dog", "lot", "log"]))
+        self.assertEqual(2, s.ladderLength('a', 'c', ["a", "b", "c"]))
+        self.assertEqual(3, s.ladderLength('hot', 'dog', ["hot", "dog", "dot"]))
