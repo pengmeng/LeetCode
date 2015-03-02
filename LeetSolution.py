@@ -1158,3 +1158,25 @@ class LeetSolution:
             else:
                 return mid
         return left
+
+    #Binary Tree Zigzag Level Order Traversal
+    def zigzagLevelOrder(self, root):
+        if not root:
+            return []
+        queue = [(root, 0)]
+        result = []
+        cur_dep = -1
+        while queue:
+            (node, dep) = queue.pop(0)
+            if not node:
+                continue
+            if dep is not cur_dep:
+                cur_dep = dep
+                result.append([])
+            result[dep].append(node.val)
+            queue.append((node.left, dep + 1))
+            queue.append((node.right, dep + 1))
+        for i in range(len(result)):
+            if i % 2:
+                result[i].reverse()
+        return result

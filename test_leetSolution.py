@@ -536,3 +536,8 @@ class TestLeetSolution(TestCase):
     def test_levelOrder(self):
         s = LeetSolution()
         self.assertEqual([[3], [9, 20], [15, 7]], s.levelOrder(TreeNode.makeTree([3, 9, 20, '#', '#', 15, 7])))
+
+    def test_zigzagLevelOrder(self):
+        s = LeetSolution()
+        self.assertEqual([[3], [20, 9], [15, 7]], s.zigzagLevelOrder(TreeNode.makeTree([3, 9, 20, '#', '#', 15, 7])))
+        self.assertEqual([[1], [3, 2], [4, 5]], s.zigzagLevelOrder(TreeNode.makeTree([1, 2, 3, 4, '#', '#', 5])))
