@@ -532,3 +532,7 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.searchInsert([1, 3, 5, 6], 2))
         self.assertEqual(4, s.searchInsert([1, 3, 5, 6], 7))
         self.assertEqual(0, s.searchInsert([1, 3, 5, 6], 0))
+
+    def test_levelOrder(self):
+        s = LeetSolution()
+        self.assertEqual([[3], [9, 20], [15, 7]], s.levelOrder(TreeNode.makeTree([3, 9, 20, '#', '#', 15, 7])))

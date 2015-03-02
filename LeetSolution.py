@@ -115,22 +115,19 @@ class LeetSolution:
     def levelOrder(self, root):
         if not root:
             return []
-        queue = [(root, 1)]
+        queue = [(root, 0)]
         result = []
-        each = []
-        cur_dep = 1
+        cur_dep = -1
         while queue:
             (node, dep) = queue.pop(0)
-            if not dep == cur_dep:
+            if not node:
+                continue
+            if dep is not cur_dep:
                 cur_dep = dep
-                result.append(each)
-                each = []
-            each.append(node.val)
-            if node.left:
-                queue.append((node.left, dep + 1))
-            if node.right:
-                queue.append((node.right, dep + 1))
-        result.append(each)
+                result.append([])
+            result[dep].append(node.val)
+            queue.append((node.left, dep + 1))
+            queue.append((node.right, dep + 1))
         return result
 
     def isSymmetric(self, root):
