@@ -1210,3 +1210,11 @@ class LeetSolution:
             else:
                 count -= 1
         return candidate
+
+    #Sqrt(x)
+    #Newton's Iterative
+    def sqrt(self, x):
+        ans, delta = float(x), 0.0001
+        while abs(ans ** 2 - x) > delta:
+            ans = (ans + x / ans) / 2
+        return ans

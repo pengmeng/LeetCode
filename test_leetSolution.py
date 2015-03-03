@@ -551,3 +551,8 @@ class TestLeetSolution(TestCase):
     def test_majorityElement(self):
         s = LeetSolution()
         self.assertEqual(3, s.majorityElement([1, 2, 3, 3, 3, 3, 3, 2, 1, 1]))
+
+    def test_sqrt(self):
+        s = LeetSolution()
+        self.assertAlmostEqual(1.414, s.sqrt(2), delta=0.01)
+        self.assertAlmostEqual(1.732, s.sqrt(3), delta=0.01)
