@@ -556,3 +556,9 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertAlmostEqual(1.414, s.sqrt(2), delta=0.01)
         self.assertAlmostEqual(1.732, s.sqrt(3), delta=0.01)
+
+    def test_searchRange(self):
+        s = LeetSolution()
+        self.assertEqual([3, 4], s.searchRange([5, 7, 7, 8, 8, 10], 8))
+        self.assertEqual([0, 0], s.searchRange([1], 1))
+        self.assertEqual([-1, -1], s.searchRange([2, 2], 3))

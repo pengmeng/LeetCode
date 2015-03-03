@@ -1218,3 +1218,23 @@ class LeetSolution:
         while abs(ans ** 2 - x) > delta:
             ans = (ans + x / ans) / 2
         return ans
+
+    #Search for a Range
+    #Tricky solution
+    def searchRange(self, A, target):
+        start = self.bsearch(A, target - 0.5)
+        if A[start] != target:
+            return [-1, -1]
+        A.append(0)
+        end = self.bsearch(A, target + 0.5) - 1
+        return [start, end]
+
+    def bsearch(self, A, target):
+        left, right = 0, len(A) - 1
+        while left < right:
+            mid = (left + right) >> 1
+            if A[mid] < target:
+                left = mid + 1
+            else:
+                right = mid
+        return left
