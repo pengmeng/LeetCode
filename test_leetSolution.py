@@ -585,3 +585,19 @@ class TestLeetSolution(TestCase):
     def test_findMinii(self):
         s = LeetSolution()
         self.assertEqual(1, s.findMinii([2, 3, 1, 2, 2, 2]))
+
+    def test_search(self):
+        s = LeetSolution()
+        self.assertEqual(4, s.search([4, 5, 6, 7, 0, 1, 2], 0))
+        self.assertEqual(-1, s.search([4, 5, 6, 7, 0, 1, 2], 10))
+        self.assertEqual(0, s.search([4, 5, 6, 7, 0, 1, 2], 4))
+        self.assertEqual(6, s.search([4, 5, 6, 7, 0, 1, 2], 2))
+
+    def test_searchii(self):
+        s = LeetSolution()
+        self.assertTrue(s.searchii([4, 4, 5, 5, 0, 1, 2, 3, 4], 0))
+        self.assertTrue(s.searchii([4, 4, 5, 5, 0, 1, 2, 3, 4], 4))
+        self.assertTrue(s.searchii([4, 4, 5, 5, 0, 1, 2, 3, 4], 1))
+        self.assertFalse(s.searchii([4, 4, 5, 5, 0, 1, 2, 3, 4], 10))
+        self.assertTrue(s.searchii([1, 3, 1, 1, 1], 1))
+        self.assertTrue(s.searchii([1, 3, 1, 1, 1], 3))
