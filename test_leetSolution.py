@@ -547,3 +547,7 @@ class TestLeetSolution(TestCase):
         self.assertEqual(5, s.ladderLength('hit', 'cog', ["hot", "dot", "dog", "lot", "log"]))
         self.assertEqual(2, s.ladderLength('a', 'c', ["a", "b", "c"]))
         self.assertEqual(3, s.ladderLength('hot', 'dog', ["hot", "dog", "dot"]))
+
+    def test_majorityElement(self):
+        s = LeetSolution()
+        self.assertEqual(3, s.majorityElement([1, 2, 3, 3, 3, 3, 3, 2, 1, 1]))

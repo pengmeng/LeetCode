@@ -1197,3 +1197,16 @@ class LeetSolution:
                         queue.append(newword)
                         distance[newword] = distance[word] + 1
         return 0
+
+    #Majority Element
+    #Moore Voting
+    def majorityElement(self, num):
+        candidate, count = num[0], 1
+        for each in iter(num[1:]):
+            if count is 0:
+                candidate, count = each, 1
+            elif candidate == each:
+                count += 1
+            else:
+                count -= 1
+        return candidate
