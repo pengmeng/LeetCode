@@ -1261,3 +1261,16 @@ class LeetSolution:
             else:
                 return True
         return False
+
+    #Find Minimum in Rotated Sorted Array II
+    def findMinii(self, num):
+        left, right = 0, len(num) - 1
+        while left < right:
+            mid = (left + right) >> 1
+            if num[mid] > num[right]:
+                left = mid + 1
+            elif num[mid] < num[right]:
+                right = mid
+            else:
+                right -= 1
+        return num[left]
