@@ -1238,3 +1238,28 @@ class LeetSolution:
             else:
                 right = mid
         return left
+
+    #Search a 2D Matrix
+    def searchMatrix(self, matrix, target):
+        left, right = 0, len(matrix) - 1
+        while left <= right:
+            mid = (left + right) >> 1
+            if matrix[mid][0] < target:
+                left = mid + 1
+            elif matrix[mid][0] > target:
+                right = mid - 1
+            else:
+                return True
+        if left - 1 < 0:
+            return False
+        line = matrix[left - 1]
+        left, right = 0, len(line) - 1
+        while left <= right:
+            mid = (left + right) >> 1
+            if line[mid] < target:
+                left = mid + 1
+            elif line[mid] > target:
+                right = mid - 1
+            else:
+                return True
+        return False

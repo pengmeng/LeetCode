@@ -562,3 +562,18 @@ class TestLeetSolution(TestCase):
         self.assertEqual([3, 4], s.searchRange([5, 7, 7, 8, 8, 10], 8))
         self.assertEqual([0, 0], s.searchRange([1], 1))
         self.assertEqual([-1, -1], s.searchRange([2, 2], 3))
+
+    def test_searchMatrix(self):
+        s = LeetSolution()
+        self.assertTrue(s.searchMatrix([[1,   3,  5,  7],
+                                        [10, 11, 16, 20],
+                                        [23, 30, 34, 50]], 3))
+        self.assertFalse(s.searchMatrix([[1,   3,  5,  7],
+                                         [10, 11, 16, 20],
+                                         [23, 30, 34, 50]], -1))
+        self.assertTrue(s.searchMatrix([[1,   3,  5,  7],
+                                        [10, 11, 16, 20],
+                                        [23, 30, 34, 50]], 10))
+        self.assertFalse(s.searchMatrix([[1,   3,  5,  7],
+                                         [10, 11, 16, 20],
+                                         [23, 30, 34, 50]], 100))
