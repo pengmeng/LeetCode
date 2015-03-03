@@ -480,14 +480,12 @@ class LeetSolution:
         if not num or num[0] < num[length - 1]:
             return num and num[0]
         left, right = 0, length - 1
-        while left <= right:
+        while left < right:
             mid = (left + right) >> 1
             if num[mid] > num[right]:
                 left = mid + 1
-            elif num[mid] > num[left]:
-                right = mid - 1
             else:
-                return num[mid]
+                right = mid
         return num[left]
 
     #Consideration...
