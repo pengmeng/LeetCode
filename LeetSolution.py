@@ -846,8 +846,8 @@ class LeetSolution:
         while i < length - 1 and i <= reach:
             maxreach = max(maxreach, i + A[i])
             if i == reach:
-            #cool stuff here in python integer -5 ~ 257 defined in a array and will be referred to the index
-            #integer out of this range will result in different id() and cannot be compared by is
+                #cool stuff here in python integer -5 ~ 257 defined in a array and will be referred to the index
+                #integer out of this range will result in different id() and cannot be compared by is
                 reach = maxreach
                 count += 1
             i += 1
@@ -1339,3 +1339,28 @@ class LeetSolution:
         # @return an integer
         def getMin(self):
             return self.stack[-1][1] if self.stack else None
+
+    #LRU Cache
+    class LRUCache:
+        def __init__(self, capacity):
+            import collections
+            self.capacity = capacity
+            self.cache = collections.OrderedDict()
+
+        # @return an integer
+        def get(self, key):
+            value = -1
+            if key in self.cache:
+                value = self.cache.pop(key)
+                self.cache[key] = value
+            return value
+
+        # @param key, an integer
+        # @param value, an integer
+        # @return nothing
+        def set(self, key, value):
+            if key in self.cache:
+                self.cache.pop(key)
+            elif len(self.cache) == self.capacity:
+                self.cache.popitem(last=False)
+            self.cache[key] = value
