@@ -1404,3 +1404,24 @@ class LeetSolution:
                 queue.append((node.right, level+1))
                 queue.append((node.left, level+1))
         return result
+
+    #Number of Islands
+    def numIslands(self, grid):
+        if len(grid) == 0:
+            return 0
+        n, m, count = len(grid), len(grid[0]), 0
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == '1':
+                    self._isisland(grid, i, j, n, m)
+                    count += 1
+        return count
+
+    def _isisland(self, grid, i, j, n, m):
+        if i < 0 or j < 0 or i >= n or j >= m or grid[i][j] == '0':
+            return
+        grid[i][j] = '0'
+        self._isisland(grid, i+1, j, n, m)
+        self._isisland(grid, i, j+1, n, m)
+        self._isisland(grid, i-1, j, n, m)
+        self._isisland(grid, i, j-1, n, m)
