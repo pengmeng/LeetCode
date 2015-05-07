@@ -1381,3 +1381,8 @@ class LeetSolution:
         for i in range(32):
             r += (n >> i & 1) << (31-i)
         return r
+
+    #Reverse Integer
+    def reverseinteger(self, x):
+        r = int(str(abs(x))[::-1])*(1 if x >= 0 else -1)
+        return  r if -2147483648 < r < 2147483647 else 0

@@ -610,3 +610,10 @@ class TestLeetSolution(TestCase):
     def test_reverseBits(self):
         s = LeetSolution()
         self.assertEqual(964176192, s.reverseBits(43261596))
+
+    def test_reverseinteger(self):
+        s = LeetSolution()
+        self.assertEqual(54321, s.reverseinteger(12345))
+        self.assertEqual(1, s.reverseinteger(100))
+        self.assertEqual(0, s.reverseinteger(0))
+        self.assertEqual(0, s.reverseinteger(1534236469))
