@@ -1479,3 +1479,16 @@ class LeetSolution:
             if j < m - 1 and board[i][j+1] == 'O':
                 board[i][j+1] = 'V'
                 queue.append((i, j+1))
+
+    #Simplify Path
+    def simplifyPath(self, path):
+        parts, stack = path.split('/'), []
+        for c in parts:
+            if c == '' or c == '.':
+                continue
+            elif c == '..':
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(c)
+        return '/' + '/'.join(stack)

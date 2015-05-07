@@ -653,5 +653,11 @@ class TestLeetSolution(TestCase):
                  'XXXX',
                  'XOXX']
         s.solve(board)
-        # self.assertEqual(after, board)
-        print(board)
+        self.assertEqual(after, board)
+
+    def test_simplifyPath(self):
+        s = LeetSolution()
+        self.assertEqual('/home', s.simplifyPath('/home'))
+        self.assertEqual('/c', s.simplifyPath('/a/./b/../../c/'))
+        self.assertEqual('/', s.simplifyPath('/../'))
+        self.assertEqual('/home/foo', s.simplifyPath('/home//foo/'))
