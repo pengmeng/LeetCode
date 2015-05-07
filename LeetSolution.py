@@ -1314,3 +1314,28 @@ class LeetSolution:
             else:
                 left += 1
         return False
+
+    #MinStack
+    class MinStack:
+        def __init__(self):
+            self.stack = []
+
+        # @param x, an integer
+        # @return an integer
+        def push(self, x):
+            curmin = self.getMin()
+            if curmin is None or x < curmin:
+                curmin = x
+            self.stack.append((x, curmin))
+
+        # @return nothing
+        def pop(self):
+            self.stack.pop()
+
+        # @return an integer
+        def top(self):
+            return self.stack[-1][0] if self.stack else None
+
+        # @return an integer
+        def getMin(self):
+            return self.stack[-1][1] if self.stack else None
