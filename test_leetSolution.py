@@ -617,3 +617,11 @@ class TestLeetSolution(TestCase):
         self.assertEqual(1, s.reverseinteger(100))
         self.assertEqual(0, s.reverseinteger(0))
         self.assertEqual(0, s.reverseinteger(1534236469))
+
+    def test_rightSideView(self):
+        s = LeetSolution()
+        self.assertEqual([], s.rightSideView(None))
+        root = TreeNode.makeTree([1, 2, 3, '#', 5, '#', 4])
+        self.assertEqual([1, 3, 4], s.rightSideView(root))
+        root = TreeNode.makeTree([1, 2, 3, '#', 5, '#', 4, 6])
+        self.assertEqual([1, 3, 4, 6], s.rightSideView(root))

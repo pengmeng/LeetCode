@@ -1385,4 +1385,22 @@ class LeetSolution:
     #Reverse Integer
     def reverseinteger(self, x):
         r = int(str(abs(x))[::-1])*(1 if x >= 0 else -1)
-        return  r if -2147483648 < r < 2147483647 else 0
+        return r if -2147483648 < r < 2147483647 else 0
+
+    #Bitwise AND of Numbers Range
+    def rangeBitwiseAnd(self, m, n):
+        pass
+
+    #Binary Tree Right Side View
+    def rightSideView(self, root):
+        if not root:
+            return []
+        result, queue = [], [(root, 0)]
+        while queue:
+            node, level = queue.pop(0)
+            if node:
+                if level >= len(result):
+                    result.append(node.val)
+                queue.append((node.right, level+1))
+                queue.append((node.left, level+1))
+        return result
