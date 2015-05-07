@@ -1425,3 +1425,57 @@ class LeetSolution:
         self._isisland(grid, i, j+1, n, m)
         self._isisland(grid, i-1, j, n, m)
         self._isisland(grid, i, j-1, n, m)
+
+    #Surrounded Regions
+    def solve(self, board):
+        if len(board) == 0:
+            return
+        board[:] = [list(x) for x in board]
+        n, m = len(board), len(board[0])
+        for i in [0, n - 1]:
+            for j in range(m):
+                if board[i][j] == 'O':
+                    self.bfssolve(board, i, j, n, m)
+        for i in range(n):
+            for j in [0, m - 1]:
+                if board[i][j] == 'O':
+                    self.bfssolve(board, i, j, n, m)
+        for i in range(n):
+            for j in range(m):
+                if board[i][j] == 'O':
+                    board[i][j] = 'X'
+                elif board[i][j] == 'V':
+                    board[i][j] = 'O'
+        board[:] = [''.join(x) for x in board]
+
+    #dfs will cause max recursion depth exceeded
+    def dfssolve(self, board, i, j, n, m):
+        if i < 0 or j < 0 or i >= n or j >= m:
+            return False
+        elif board[i][j] == 'X':
+            return True
+        board[i][j] = 'X'
+        flag = self.dfssolve(board, i+1, j, n, m) \
+            and self.dfssolve(board, i, j+1, n, m) \
+            and self.dfssolve(board, i-1, j, n, m) \
+            and self.dfssolve(board, i, j-1, n, m)
+        board[i][j] = 'O'
+        return flag
+
+    def bfssolve(self, board, i, j, n, m):
+        queue, board[i][j] = [], 'V'
+        queue.append((i, j))
+        while queue:
+            i, j = queue.pop(0)
+            if i > 0 and board[i-1][j] == 'O':
+                board[i-1][j] = 'V'
+                queue.append((i-1, j))
+            if i < n - 1 and board[i+1][j] == 'O':
+                board[i+1][j] = 'V'
+                queue.append((i+1, j))
+            if j > 0 and board[i][j-1] == 'O':
+                board[i][j-1] = 'V'
+                queue.append((i, j-1))
+            if j < m - 1 and board[i][j+1] == 'O':
+                board[i][j+1] = 'V'
+                queue.append((i, j+1))

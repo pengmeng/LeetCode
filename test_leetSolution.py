@@ -632,12 +632,26 @@ class TestLeetSolution(TestCase):
         grid = [['1', '1', '1', '1', '0'],
                 ['1', '1', '0', '1', '0'],
                 ['1', '1', '0', '0', '0'],
-                ['0']*5]
+                ['0'] * 5]
         self.assertEqual(1, s.numIslands(grid))
         grid = [['1', '1', '0', '0', '0'],
                 ['1', '1', '0', '0', '0'],
                 ['0', '0', '1', '0', '0'],
                 ['0', '0', '0', '1', '1']]
         self.assertEqual(3, s.numIslands(grid))
-        grid = [['0']*5]*5
+        grid = [['0'] * 5] * 5
         self.assertEqual(0, s.numIslands(grid))
+
+    def test_solve(self):
+        s = LeetSolution()
+        board = ['XXXX',
+                 'XOOX',
+                 'XXOX',
+                 'XOXX']
+        after = ['XXXX',
+                 'XXXX',
+                 'XXXX',
+                 'XOXX']
+        s.solve(board)
+        # self.assertEqual(after, board)
+        print(board)
