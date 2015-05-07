@@ -1,6 +1,6 @@
 ## LeetCode Solutions in Python
 
-By Peng Meng
+Will start write code for leecode again...
 
 ### Description
 - Solution codes are in LeetSolution.py
