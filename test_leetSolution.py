@@ -601,3 +601,8 @@ class TestLeetSolution(TestCase):
         self.assertFalse(s.searchii([4, 4, 5, 5, 0, 1, 2, 3, 4], 10))
         self.assertTrue(s.searchii([1, 3, 1, 1, 1], 1))
         self.assertTrue(s.searchii([1, 3, 1, 1, 1], 3))
+
+    def test_hammingWeight(self):
+        s = LeetSolution()
+        i = 0b000110011
+        self.assertEqual(4, s.hammingWeight(i))

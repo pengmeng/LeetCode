@@ -1364,3 +1364,12 @@ class LeetSolution:
             elif len(self.cache) == self.capacity:
                 self.cache.popitem(last=False)
             self.cache[key] = value
+
+    #Number of 1 Bits
+    def hammingWeight(self, n):
+        #return bin(n).count('1')
+        count = 0
+        while n:
+            n &= n-1
+            count += 1
+        return count
