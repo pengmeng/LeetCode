@@ -606,3 +606,7 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         i = 0b000110011
         self.assertEqual(4, s.hammingWeight(i))
+
+    def test_reverseBits(self):
+        s = LeetSolution()
+        self.assertEqual(964176192, s.reverseBits(43261596))

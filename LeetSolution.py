@@ -1373,3 +1373,11 @@ class LeetSolution:
             n &= n-1
             count += 1
         return count
+
+    #Reverse Bits
+    def reverseBits(self, n):
+        #return int(bin(n)[:1:-1].ljust(32,'0'), 2)
+        r = 0
+        for i in range(32):
+            r += (n >> i & 1) << (31-i)
+        return r
