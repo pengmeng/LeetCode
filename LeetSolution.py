@@ -1492,3 +1492,17 @@ class LeetSolution:
             else:
                 stack.append(c)
         return '/' + '/'.join(stack)
+
+    #Trapping Rain Water
+    def trap(self, height):
+        water, left, right = 0, 0, 0
+        i, j = 0, len(height) - 1
+        while i <= j:
+            left, right = max(height[i], left), max(height[j], right)
+            while i <= j and height[i] <= left <= right:
+                water += left - height[i]
+                i += 1
+            while i <= j and height[j] <= right <= left:
+                water += right - height[j]
+                j -= 1
+        return water
