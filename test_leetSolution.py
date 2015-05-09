@@ -665,3 +665,8 @@ class TestLeetSolution(TestCase):
     def test_trap(self):
         s = LeetSolution()
         self.assertEqual(6, s.trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+
+    def test_maximalRectangle(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.maximalRectangle(['1']))
+        self.assertEqual(1, s.maximalRectangle(['10']))

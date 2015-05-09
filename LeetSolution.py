@@ -1506,3 +1506,28 @@ class LeetSolution:
                 water += right - height[j]
                 j -= 1
         return water
+
+    #Maximal Rectangle
+    def maximalRectangle(self, matrix):
+        if not matrix:
+            return 0
+        n, m = len(matrix), len(matrix[0])
+        left, right, height = [0]*m, [m]*m, [0]*m
+        maxarea = 0
+        for i in range(n):
+            curleft, curright = 0, m
+            for j in range(m):
+                if matrix[i][j] == '1':
+                    left[j] = max(left[j], curleft)
+                    height[j] += 1
+                else:
+                    curleft = j + 1
+                    left[j], height[j] = 0, 0
+                if matrix[i][m-j-1] == '1':
+                    right[m-j-1] = min(right[m-j-1], curright)
+                else:
+                    right[m-j-1] = m
+                    curright = m - j -1
+            for j in range(m):
+                maxarea = max(maxarea, (right[j] - left[j]) * height[j])
+        return maxarea
