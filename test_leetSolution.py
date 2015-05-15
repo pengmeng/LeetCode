@@ -681,4 +681,8 @@ class TestLeetSolution(TestCase):
 
     def test_getPermutation(self):
         s = LeetSolution()
-        print(s.getPermutation(3, 4))
+        self.assertEqual('231', s.getPermutation(3, 4))
+
+    def test_grayCode(self):
+        s = LeetSolution()
+        self.assertEqual([0, 1, 3, 2], s.grayCode(2))

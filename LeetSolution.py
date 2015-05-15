@@ -1554,3 +1554,7 @@ class LeetSolution:
             n -= 1
             k %= totalCount
         return result
+
+    #Gray Code
+    def grayCode(self, n):
+        return [(i>>1)^i for i in range(2**n)]
