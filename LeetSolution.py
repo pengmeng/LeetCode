@@ -1527,7 +1527,11 @@ class LeetSolution:
                     right[m-j-1] = min(right[m-j-1], curright)
                 else:
                     right[m-j-1] = m
-                    curright = m - j -1
+                    curright = m - j - 1
             for j in range(m):
                 maxarea = max(maxarea, (right[j] - left[j]) * height[j])
         return maxarea
+
+    #Permutations
+    def permute(self, nums):
+        return [nums] if len(nums) <= 1 else [[x] + y for x in nums for y in self.permute(nums[:nums.index(x)]+nums[nums.index(x)+1:])]

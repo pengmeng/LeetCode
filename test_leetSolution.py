@@ -670,3 +670,7 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(1, s.maximalRectangle(['1']))
         self.assertEqual(1, s.maximalRectangle(['10']))
+
+    def test_permute(self):
+        s = LeetSolution()
+        self.assertEqual([[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]], s.permute([1, 2, 3]))
