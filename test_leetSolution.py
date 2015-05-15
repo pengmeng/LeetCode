@@ -686,3 +686,12 @@ class TestLeetSolution(TestCase):
     def test_grayCode(self):
         s = LeetSolution()
         self.assertEqual([0, 1, 3, 2], s.grayCode(2))
+
+    def test_exist(self):
+        s = LeetSolution()
+        board = ["ABCE",
+                 "SFCS",
+                 "ADEE"]
+        self.assertTrue(s.exist(board, 'ABCCED'))
+        self.assertTrue(s.exist(board, 'SEE'))
+        self.assertFalse(s.exist(board, 'ABCB'))

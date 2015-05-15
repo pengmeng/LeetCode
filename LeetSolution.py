@@ -1456,9 +1456,9 @@ class LeetSolution:
             return True
         board[i][j] = 'X'
         flag = self.dfssolve(board, i+1, j, n, m) \
-            and self.dfssolve(board, i, j+1, n, m) \
-            and self.dfssolve(board, i-1, j, n, m) \
-            and self.dfssolve(board, i, j-1, n, m)
+               and self.dfssolve(board, i, j+1, n, m) \
+               and self.dfssolve(board, i-1, j, n, m) \
+               and self.dfssolve(board, i, j-1, n, m)
         board[i][j] = 'O'
         return flag
 
@@ -1557,4 +1557,32 @@ class LeetSolution:
 
     #Gray Code
     def grayCode(self, n):
-        return [(i>>1)^i for i in range(2**n)]
+        return [(i >> 1) ^ i for i in range(2**n)]
+
+    #Word Search
+    def exist(self, board, word):
+        if not word:
+            return True
+        if len(board) == 0:
+            return False
+        board = [list(x) for x in board]
+        n, m = len(board), len(board[0])
+        for i in range(n):
+            for j in range(m):
+                if self.exsitWord(board, i, j, n, m, word):
+                    return True
+        return False
+
+    def exsitWord(self, board, i, j, n, m, word):
+        if not word:
+            return True
+        if i < 0 or i >= n or j < 0 or j >= m or board[i][j] != word[0]:
+            return False
+        board[i][j] = ' '
+        sub = word[1:]
+        result = self.exsitWord(board, i+1, j, n, m, sub) \
+            or self.exsitWord(board, i-1, j, n, m, sub) \
+            or self.exsitWord(board, i, j+1, n, m, sub) \
+            or self.exsitWord(board, i, j-1, n, m, sub)
+        board[i][j] = word[0]
+        return result
