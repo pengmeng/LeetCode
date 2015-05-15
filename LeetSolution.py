@@ -1542,3 +1542,15 @@ class LeetSolution:
         for n in nums:
             result = {r[:i]+(n,)+r[i:] for r in result for i in range(len(r)+1)}
         return [list(x) for x in result]
+
+    #Permutation Sequence
+    def getPermutation(self, n, k):
+        import math
+        nums, result = [i + 1 for i in range(n)], ''
+        while n > 0:
+            totalCount = math.factorial(n - 1)
+            index = (k - 1) // totalCount
+            result += str(nums.pop(index))
+            n -= 1
+            k %= totalCount
+        return result

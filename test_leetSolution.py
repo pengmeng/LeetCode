@@ -678,3 +678,7 @@ class TestLeetSolution(TestCase):
     def test_permuteii(self):
         s = LeetSolution()
         self.assertEqual([[1, 2, 1], [2, 1, 1], [1, 1, 2]], s.permuteii([1, 1, 2]))
+
+    def test_getPermutation(self):
+        s = LeetSolution()
+        print(s.getPermutation(3, 4))
