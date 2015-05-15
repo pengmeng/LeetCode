@@ -1535,3 +1535,10 @@ class LeetSolution:
     #Permutations
     def permute(self, nums):
         return [nums] if len(nums) <= 1 else [[x] + y for x in nums for y in self.permute(nums[:nums.index(x)]+nums[nums.index(x)+1:])]
+
+    #Permutations II
+    def permuteii(self, nums):
+        result = {()}
+        for n in nums:
+            result = {r[:i]+(n,)+r[i:] for r in result for i in range(len(r)+1)}
+        return [list(x) for x in result]
