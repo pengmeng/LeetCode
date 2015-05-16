@@ -695,3 +695,16 @@ class TestLeetSolution(TestCase):
         self.assertTrue(s.exist(board, 'ABCCED'))
         self.assertTrue(s.exist(board, 'SEE'))
         self.assertFalse(s.exist(board, 'ABCB'))
+
+    def test_solveNQueens(self):
+        s = LeetSolution()
+        self.assertEqual([['..Q.', 'Q...', '...Q', '.Q..'], ['.Q..', '...Q', 'Q...', '..Q.']], s.solveNQueens(4))
+
+    def test_solveNQueensii(self):
+        s = LeetSolution()
+        pass
+
+    def test_totalNQueens(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.totalNQueens(1))
+        self.assertEqual(2, s.totalNQueens(4))

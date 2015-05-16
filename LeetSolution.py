@@ -1586,3 +1586,45 @@ class LeetSolution:
             or self.exsitWord(board, i, j-1, n, m, sub)
         board[i][j] = word[0]
         return result
+
+    #N-Queens
+    def solveNQueens(self, n):
+        stack, result = [[(0, i)] for i in range(n)], []
+        while stack:
+            board = stack.pop()
+            row = len(board)
+            if row == n:
+                result.append([''.join('Q' if i == c else '.' for i in range(n)) for _, c in board])
+            else:
+                for col in range(n):
+                    if all(col != c and abs(row-r) != abs(col-c) for r, c in board):
+                        stack.append(board+[(row, col)])
+        return result
+
+    #N-Queens bit
+    def solveNQueensii(self, n):
+        pass
+
+    def bittest(self, limit, row, ld, rd):
+        if row == limit:
+            pass
+        else:
+            pos = limit & ~(row | ld | rd)
+            while pos:
+                p = pos & -pos
+                pos -= p
+                self.bittest(limit, row + p, (ld | row) << 1, (rd | row) >> 1)
+
+    #N-Queens II
+    def totalNQueens(self, n):
+        stack, count = [[(0, i)] for i in range(n)], 0
+        while stack:
+            board = stack.pop()
+            row = len(board)
+            if row == n:
+                count += 1
+            else:
+                for col in range(n):
+                    if all(col != c and abs(row-r) != abs(col-c) for r, c in board):
+                        stack.append(board+[(row, col)])
+        return count
