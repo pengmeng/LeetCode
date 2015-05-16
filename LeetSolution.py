@@ -1581,9 +1581,9 @@ class LeetSolution:
         board[i][j] = ' '
         sub = word[1:]
         result = self.exsitWord(board, i+1, j, n, m, sub) \
-            or self.exsitWord(board, i-1, j, n, m, sub) \
-            or self.exsitWord(board, i, j+1, n, m, sub) \
-            or self.exsitWord(board, i, j-1, n, m, sub)
+                 or self.exsitWord(board, i-1, j, n, m, sub) \
+                 or self.exsitWord(board, i, j+1, n, m, sub) \
+                 or self.exsitWord(board, i, j-1, n, m, sub)
         board[i][j] = word[0]
         return result
 
@@ -1628,3 +1628,48 @@ class LeetSolution:
                     if all(col != c and abs(row-r) != abs(col-c) for r, c in board):
                         stack.append(board+[(row, col)])
         return count
+
+    #Letter Combinations of a Phone Number
+    def letterCombinations(self, digits):
+        if not digits:
+            return []
+        kvmaps = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
+        }
+        return functools.reduce(lambda acc, digit: [x + y for x in acc for y in kvmaps[digit]], digits, [''])
+
+    #Letter Combinations of a Phone Number DFS
+    def letterCombinationsii(self, digits):
+        if not digits:
+            return []
+        dict = {
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
+        }
+        result = []
+        self.helper(digits, dict, result, '')
+        return result
+
+    def helper(self, digits, dict, result, temp):
+        if not digits:
+            result.append(temp)
+            return
+        d = digits[0]
+        l = dict[d]
+        for c in l:
+            temp += c
+            self.helper(digits[1:], dict, result, temp)
+            temp = temp[:-1]

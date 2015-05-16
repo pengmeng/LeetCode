@@ -708,3 +708,16 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(1, s.totalNQueens(1))
         self.assertEqual(2, s.totalNQueens(4))
+
+    def test_letterCombinations(self):
+        s = LeetSolution()
+        self.assertListEqual(['d', 'e', 'f'], s.letterCombinations('3'))
+        self.assertListEqual(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"],
+                             s.letterCombinations('23'))
+
+    def test_letterCombinationsii(self):
+        s = LeetSolution()
+        self.assertListEqual([], s.letterCombinationsii(''))
+        self.assertListEqual(['d', 'e', 'f'], s.letterCombinationsii('3'))
+        self.assertListEqual(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"],
+                             s.letterCombinationsii('23'))
