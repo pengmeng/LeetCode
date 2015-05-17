@@ -702,12 +702,17 @@ class TestLeetSolution(TestCase):
 
     def test_solveNQueensii(self):
         s = LeetSolution()
-        pass
+        self.assertEqual([['..Q.', 'Q...', '...Q', '.Q..'], ['.Q..', '...Q', 'Q...', '..Q.']], s.solveNQueensii(4))
 
     def test_totalNQueens(self):
         s = LeetSolution()
         self.assertEqual(1, s.totalNQueens(1))
         self.assertEqual(2, s.totalNQueens(4))
+
+    def test_totalNQueensii(self):
+        s = LeetSolution()
+        self.assertEqual(1, s.totalNQueensii(1))
+        self.assertEqual(2, s.totalNQueensii(4))
 
     def test_letterCombinations(self):
         s = LeetSolution()

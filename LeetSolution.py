@@ -1,9 +1,10 @@
 __author__ = 'mengpeng'
 from ListNode import ListNode
+from graph import UndirectedGraphNode
 import MP_Sort.InsertSort
 import functools
 import string
-from graph import UndirectedGraphNode
+import math
 
 
 class LeetSolution:
@@ -1603,17 +1604,24 @@ class LeetSolution:
 
     #N-Queens bit
     def solveNQueensii(self, n):
-        pass
+        limit = (1 << n) - 1
+        result, each = [], []
+        self.bittest(limit, 0, 0, 0, result, each)
+        return result
 
-    def bittest(self, limit, row, ld, rd):
+    def bittest(self, limit, row, ld, rd, result, each):
         if row == limit:
-            pass
-        else:
-            pos = limit & ~(row | ld | rd)
-            while pos:
-                p = pos & -pos
-                pos -= p
-                self.bittest(limit, row + p, (ld | row) << 1, (rd | row) >> 1)
+            result.append(each.copy())
+            return
+        pos = limit & (~(row | ld | rd))
+        while pos:
+            p = pos & (-pos)
+            pos -= p
+            n = int(math.log2(limit+1))
+            i = int(math.log2(p))
+            each.append((n-i-1)*'.'+'Q'+i*'.')
+            self.bittest(limit, row | p, (ld | p) << 1, (rd | p) >> 1, result, each)
+            each.pop()
 
     #N-Queens II
     def totalNQueens(self, n):
@@ -1628,6 +1636,22 @@ class LeetSolution:
                     if all(col != c and abs(row-r) != abs(col-c) for r, c in board):
                         stack.append(board+[(row, col)])
         return count
+
+    def totalNQueensii(self, n):
+        limit = (1 << n) - 1
+        result = [0]
+        self.bittestii(limit, 0, 0, 0, result)
+        return result[0]
+
+    def bittestii(self, limit, row, ld, rd, result):
+        if row == limit:
+            result[0] += 1
+            return
+        pos = limit & (~(row | ld | rd))
+        while pos:
+            p = pos & (-pos)
+            pos -= p
+            self.bittestii(limit, row | p, (ld | p) << 1, (rd | p) >> 1, result)
 
     #Letter Combinations of a Phone Number
     def letterCombinations(self, digits):
