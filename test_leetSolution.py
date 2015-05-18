@@ -726,3 +726,11 @@ class TestLeetSolution(TestCase):
         self.assertListEqual(['d', 'e', 'f'], s.letterCombinationsii('3'))
         self.assertListEqual(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"],
                              s.letterCombinationsii('23'))
+
+    def test_largestRectangleArea(self):
+        s = LeetSolution()
+        self.assertEqual(10, s.largestRectangleArea([2, 1, 5, 6, 2, 3]))
+
+    def test_largestRectangleAreaii(self):
+        s = LeetSolution()
+        self.assertEqual(10, s.largestRectangleAreaii([2, 1, 5, 6, 2, 3]))

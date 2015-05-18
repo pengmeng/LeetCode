@@ -1697,3 +1697,45 @@ class LeetSolution:
             temp += c
             self.helper(digits[1:], dict, result, temp)
             temp = temp[:-1]
+
+    #Largest Rectangle in Histogram
+    #!!!
+    def largestRectangleArea(self, height):
+        length = len(height)
+        if length < 2:
+            return height[0] if length else 0
+        stack, maxarea = [], 0
+        for i in range(length):
+            current = height[i]
+            while stack:
+                if current < stack[-1][1]:
+                    index, h, leftarea = stack.pop()
+                    maxarea = max(h*(i-index-1)+leftarea, maxarea)
+                elif current == stack[-1][1]:
+                    stack.pop()
+                else:
+                    break
+            if stack:
+                stack.append((i, current, current*(i-stack[-1][0])))
+            else:
+                stack.append((i, current, current*(i+1)))
+        while stack:
+            index, h, leftarea = stack.pop()
+            maxarea = max(h*(length-index-1)+leftarea, maxarea)
+        return maxarea
+
+    #Largest Rectangle in Histogram
+    #magic solution
+    def largestRectangleAreaii(self, height):
+        length = len(height)
+        if length < 2:
+            return height[0] if length else 0
+        maxarea = 0
+        height.append(0)
+        for i in range(length+1):
+            j = i - 1
+            while j >= 0 and height[j] > height[i]:
+                maxarea = max(height[j]*(i-j), maxarea)
+                height[j] = height[i]
+                j -= 1
+        return maxarea
