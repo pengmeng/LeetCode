@@ -1,5 +1,6 @@
 __author__ = 'mengpeng'
 from ListNode import ListNode
+from TreeNode import TreeNode
 from graph import UndirectedGraphNode
 import MP_Sort.InsertSort
 import functools
@@ -1739,3 +1740,29 @@ class LeetSolution:
                 height[j] = height[i]
                 j -= 1
         return maxarea
+
+    #Unique Binary Search Trees II
+    #https://leetcode.com/discuss/29330/brief-python-dp-solution
+    def generateTrees(self, n):
+        result = {0: [None]}
+        for i in range(1, n + 1):
+            result[i] = []
+            for pos in range(1, i + 1):
+                for left in result[pos - 1]:
+                    for right in result[i - pos]:
+                        root = TreeNode(pos)
+                        result[i].append(root)
+                        right = self.treesubtitute(right, range(pos + 1, i + 1))
+                        root.left = left
+                        root.right = right
+        return result[n]
+
+    def treesubtitute(self, root, nums):
+        if not root:
+            return None
+        new = TreeNode(nums[root.val - 1])
+        if root.left:
+            new.left = self.treesubtitute(root.left, nums)
+        if root.right:
+            new.right = self.treesubtitute(root.right, nums)
+        return new
