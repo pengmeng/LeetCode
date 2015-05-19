@@ -734,3 +734,9 @@ class TestLeetSolution(TestCase):
     def test_largestRectangleAreaii(self):
         s = LeetSolution()
         self.assertEqual(10, s.largestRectangleAreaii([2, 1, 5, 6, 2, 3]))
+
+    def test_minDistance(self):
+        s = LeetSolution()
+        self.assertEqual(4, s.minDistance('', 'abcd'))
+        self.assertEqual(5, s.minDistance('abcde', 'fghij'))
+        self.assertEqual(1, s.minDistance('abcde', 'abce'))
