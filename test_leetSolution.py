@@ -740,3 +740,8 @@ class TestLeetSolution(TestCase):
         self.assertEqual(4, s.minDistance('', 'abcd'))
         self.assertEqual(5, s.minDistance('abcde', 'fghij'))
         self.assertEqual(1, s.minDistance('abcde', 'abce'))
+
+    def test_partition(self):
+        s = LeetSolution()
+        self.assertEqual([], s.partition(''))
+        self.assertListEqual([["a", "a", "b"], ["aa", "b"]], s.partition('aab'))

@@ -1783,3 +1783,23 @@ class LeetSolution:
                 cost = 0 if word1[i] == word2[j] else 1
                 dp[i][j] = min(dp[i-1][j-1] + cost, dp[i-1][j] + 1, dp[i][j-1] + 1)
         return dp[n][m]
+
+    #Palindrome Partitioning
+    def partition(self, s):
+        if not s:
+            return []
+        result = []
+        self.dfspartition(s, result, [])
+        return result
+
+    def dfspartition(self, s, result, each):
+        if not s:
+            result.append(each[:])
+            # An excellent way to copy a list
+            return
+        for i in range(1, len(s) + 1):
+            sub = s[:i]
+            if sub == sub[::-1]:
+                each.append(sub)
+                self.dfspartition(s[i:], result, each)
+                each.pop()
