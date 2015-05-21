@@ -1847,9 +1847,19 @@ class LeetSolution:
 
     #House Robber
     def rob(self, nums):
-        first, middle, cur = 0, 0, 0
-        for each in nums:
-            cur = max(first + each, middle)
-            first = middle
-            middle = cur
-        return cur
+        now = prev = 0
+        for n in nums:
+            now, prev = max(now, prev + n), now
+            print(now, prev)
+        return now
+
+    #House Robber II
+    #crazy from https://leetcode.com/discuss/36586/6-lines-function-body
+    def robii(self, nums):
+        def rob(nums):
+            now = prev = 0
+            for n in nums:
+                now, prev = max(now, prev + n), now
+                print(now, prev)
+            return now
+        return max(rob(nums[len(nums) != 1:]), rob(nums[:-1]))

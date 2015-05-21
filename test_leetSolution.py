@@ -760,3 +760,4 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(0, s.rob([]))
         self.assertEqual(5, s.rob([5]))
+        print(s.rob([3, 5, 4, 7, 1, 6, 2]))
