@@ -745,3 +745,7 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual([], s.partition(''))
         self.assertListEqual([["a", "a", "b"], ["aa", "b"]], s.partition('aab'))
+
+    def test_numDistinct(self):
+        s = LeetSolution()
+        self.assertEqual(3, s.numDistinct('rabbbit', 'rabbit'))
