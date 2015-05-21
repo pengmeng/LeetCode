@@ -1850,7 +1850,6 @@ class LeetSolution:
         now = prev = 0
         for n in nums:
             now, prev = max(now, prev + n), now
-            print(now, prev)
         return now
 
     #House Robber II
@@ -1860,6 +1859,25 @@ class LeetSolution:
             now = prev = 0
             for n in nums:
                 now, prev = max(now, prev + n), now
-                print(now, prev)
             return now
         return max(rob(nums[len(nums) != 1:]), rob(nums[:-1]))
+
+    #Palindrome Partitioning II
+    #cannot understand...
+    def minCut(self, s):
+        length = len(s)
+        isp = [[False] * length for _ in range(length)]
+        cut = list(range(length+1))
+        cut[0] = -1
+        for i in range(length):
+            for j in range(i, -1, -1):
+                if s[i] == s[j]:
+                    if i - j <= 1:
+                        isp[j][i] = True
+                    else:
+                        isp[j][i] = isp[j+1][i-1]
+                    if isp[j][i]:
+                        cut[i+1] = min(cut[i+1], cut[j]+1)
+                else:
+                    isp[j][i] = False
+        return cut[length]
