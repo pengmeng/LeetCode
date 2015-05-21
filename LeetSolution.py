@@ -1844,3 +1844,12 @@ class LeetSolution:
                     or self.isScramble(s1[:i], s2[:i]) and self.isScramble(s1[i:], s2[i:]):
                 return True
         return False
+
+    #House Robber
+    def rob(self, nums):
+        first, middle, cur = 0, 0, 0
+        for each in nums:
+            cur = max(first + each, middle)
+            first = middle
+            middle = cur
+        return cur

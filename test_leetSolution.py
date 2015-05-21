@@ -755,3 +755,8 @@ class TestLeetSolution(TestCase):
         self.assertTrue(s.isScramble('great', 'rgeat'))
         self.assertTrue(s.isScramble('great', 'rgtae'))
         self.assertTrue(s.isScramble('rgeat', 'rgtae'))
+
+    def test_rob(self):
+        s = LeetSolution()
+        self.assertEqual(0, s.rob([]))
+        self.assertEqual(5, s.rob([5]))
