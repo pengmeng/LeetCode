@@ -749,3 +749,9 @@ class TestLeetSolution(TestCase):
     def test_numDistinct(self):
         s = LeetSolution()
         self.assertEqual(3, s.numDistinct('rabbbit', 'rabbit'))
+
+    def test_isScramble(self):
+        s = LeetSolution()
+        self.assertTrue(s.isScramble('great', 'rgeat'))
+        self.assertTrue(s.isScramble('great', 'rgtae'))
+        self.assertTrue(s.isScramble('rgeat', 'rgtae'))

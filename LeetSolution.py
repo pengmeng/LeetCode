@@ -1824,3 +1824,23 @@ class LeetSolution:
                     else:
                         dp[i][j] = dp[i-1][j]
         return dp[n][m]
+
+    #Scramble String
+    def isScramble(self, s1, s2):
+        l1, l2 = len(s1), len(s2)
+        if l1 == 0:
+            return True
+        elif l1 == 1:
+            return s1 == s2
+        elif l1 != l2:
+            return False
+        elif sorted(s1) != sorted(s2):
+            return False
+        elif l1 <= 3:
+            # A tricky prune that lenght 3 can reach all permutations
+            return True
+        for i in range(1, l1):
+            if self.isScramble(s1[:i], s2[-i:]) and self.isScramble(s1[i:], s2[:-i]) \
+                    or self.isScramble(s1[:i], s2[:i]) and self.isScramble(s1[i:], s2[i:]):
+                return True
+        return False
