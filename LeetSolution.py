@@ -2047,3 +2047,17 @@ class LeetSolution:
         array[i], array[end] = array[end], array[i]
         return i
 
+    # Missing Number
+    def missingNumber(self, nums):
+        n = len(nums)
+        return n * (n + 1) / 2 - sum(nums)
+
+    # Ugly Number
+    def isUgly(self, num):
+        while num % 2 == 0 and num > 1:
+            num /= 2
+        while num % 3 == 0 and num > 1:
+            num /=3
+        while num % 5 == 0 and num > 1:
+            num /=5
+        return num == 1

@@ -791,6 +791,10 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(5, s.findKthLargest([3, 2, 1, 5, 6, 4], 2))
 
+    def test_missingNumber(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.missingNumber([0, 1, 3]))
+
 
 class TestStack(TestCase):
     def test_push(self):
@@ -834,3 +838,19 @@ class TestQueue(TestCase):
         self.assertEqual(100, q.peek())
         q.pop()
         self.assertTrue(q.empty())
+
+    def test_isUgly(self):
+        s = LeetSolution()
+        self.assertTrue(s.isUgly(1))
+        self.assertTrue(s.isUgly(2))
+        self.assertTrue(s.isUgly(3))
+        self.assertTrue(s.isUgly(4))
+        self.assertTrue(s.isUgly(5))
+        self.assertTrue(s.isUgly(6))
+        self.assertTrue(s.isUgly(8))
+        self.assertTrue(s.isUgly(9))
+        self.assertTrue(s.isUgly(10))
+        self.assertTrue(s.isUgly(12))
+        # self.assertFalse(s.isUgly(7))
+        # self.assertFalse(s.isUgly(14))
+        # self.assertFalse(s.isUgly(49))
