@@ -851,6 +851,23 @@ class TestQueue(TestCase):
         self.assertTrue(s.isUgly(9))
         self.assertTrue(s.isUgly(10))
         self.assertTrue(s.isUgly(12))
-        # self.assertFalse(s.isUgly(7))
-        # self.assertFalse(s.isUgly(14))
-        # self.assertFalse(s.isUgly(49))
+        self.assertFalse(s.isUgly(7))
+        self.assertFalse(s.isUgly(14))
+        self.assertFalse(s.isUgly(49))
+
+    def test_nthUglyNumber(self):
+        s = LeetSolution()
+        self.assertEqual(9, s.nthUglyNumber(8))
+        self.assertEqual(10, s.nthUglyNumber(9))
+        self.assertEqual(12, s.nthUglyNumber(10))
+
+    def test_countPrimes(self):
+        s = LeetSolution()
+        self.assertEqual(30, s.countPrimes(121))
+        self.assertEqual(114155, s.countPrimes(1500000))
+
+    def test_multiply(self):
+        s = LeetSolution()
+        for i in range(10):
+            a, b = randint(0, 10 ** 6), randint(0, 10 ** 6)
+            self.assertEqual(str(a * b), s.multiply(str(a), str(b)))

@@ -2061,3 +2061,58 @@ class LeetSolution:
         while num % 5 == 0 and num > 1:
             num /=5
         return num == 1
+
+    # Ugly Number II
+    def nthUglyNumber(self, n):
+        ugly = [1]
+        i2 = i3 = i5 = 0
+        while n > 1:
+            u2, u3, u5 = 2 * ugly[i2], 3 * ugly[i3], 5 * ugly[i5]
+            umin = min([u2, u3, u5])
+            if umin == u2:
+                i2 += 1
+            if umin == u3:
+                i3 += 1
+            if umin == u5:
+                i5 += 1
+            ugly.append(umin)
+            n -= 1
+        return ugly[-1]
+
+    # Count Primes
+    def countPrimes(self, n):
+        if n <= 2:
+            return 0
+        dp = [True] * n
+        dp[0] = dp[1] = False
+        for i in range(2, n):
+            if dp[i] is True:
+                for j in range(2, (n - 1) // i + 1):
+                    dp[i * j] = False
+        return sum(dp)
+
+    # Multiply Strings
+    def multiply(self, num1, num2):
+        res = [0] * (len(num1) + len(num2))
+        for i, n1 in enumerate(reversed(num1)):
+            for j, n2 in enumerate(reversed(num2)):
+                res[i + j] += int(n1) * int(n2)
+                res[i + j + 1] += int(res[i + j] / 10)
+                res[i + j] %= 10
+        while len(res) > 1 and res[-1] == 0:
+            res.pop()
+        return ''.join(map(str, res[::-1]))
+
+    # First Bad Version
+    def firstBadVersion(self, n):
+        left, right = 1, n
+        while left < right:
+            mid = (left + right) >> 1
+            if self.isBadVersion(mid):
+                right = mid
+            else:
+                left = mid + 1
+        return right
+
+    def isBadVersion(self, x):
+        pass
