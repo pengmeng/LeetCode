@@ -787,6 +787,10 @@ class TestLeetSolution(TestCase):
                              "st", "er", "sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb",
                              "ni", "mr", "pa", "he", "lr", "sq", "ye"}))
 
+    def test_findKthLargest(self):
+        s = LeetSolution()
+        self.assertEqual(5, s.findKthLargest([3, 2, 1, 5, 6, 4], 2))
+
 
 class TestStack(TestCase):
     def test_push(self):

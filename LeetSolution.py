@@ -2022,3 +2022,28 @@ class LeetSolution:
             :rtype: bool
             """
             return not (self.stack_1 or self.stack_2)
+
+    # Kth Largest Element in an Array
+    def findKthLargest(self, nums, k):
+        return self.findKthSmallest(nums, len(nums) - k + 1)
+
+    def findKthSmallest(self, nums, k):
+        if nums:
+            par = self.findKthLargest_partition(nums, 0, len(nums) - 1)
+            if k > par + 1:
+                return self.findKthSmallest(nums[par + 1:], k - par - 1)
+            elif k < par + 1:
+                return self.findKthSmallest(nums[:par], k)
+            else:
+                return nums[par]
+
+    def findKthLargest_partition(self, array, start, end):
+        pivot = array[end]
+        i = start
+        for j in range(start, end):
+            if array[j] <= pivot:
+                array[i], array[j] = array[j], array[i]
+                i += 1
+        array[i], array[end] = array[end], array[i]
+        return i
+
