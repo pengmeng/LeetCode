@@ -1925,3 +1925,100 @@ class LeetSolution:
                 forward = not forward
             wordlist -= set(front)
         return []
+
+    class Stack(object):
+        def __init__(self):
+            self.queue_1 = []
+            self.queue_2 = []
+
+        def push(self, x):
+            """
+            :type x: int
+            :rtype: nothing
+            """
+            if not (self.queue_1 or self.queue_2) or self.queue_1:
+                self.queue_1.append(x)
+            elif self.queue_2:
+                self.queue_2.append(x)
+
+        def pop(self):
+            """
+            :rtype: nothing
+            """
+            if self.queue_1:
+                while len(self.queue_1) > 1:
+                    self.queue_2.append(self.queue_1.pop(0))
+                self.queue_1.pop(0)
+            elif self.queue_2:
+                while len(self.queue_2) > 1:
+                    self.queue_1.append(self.queue_2.pop(0))
+                self.queue_2.pop(0)
+
+        def top(self):
+            """
+            :rtype: int
+            """
+            tmp = None
+            if self.queue_1:
+                while len(self.queue_1) > 1:
+                    self.queue_2.append(self.queue_1.pop(0))
+                tmp = self.queue_1.pop(0)
+                self.queue_2.append(tmp)
+            elif self.queue_2:
+                while len(self.queue_2) > 1:
+                    self.queue_1.append(self.queue_2.pop(0))
+                tmp = self.queue_2.pop(0)
+                self.queue_1.append(tmp)
+            return tmp
+
+        def empty(self):
+            """
+            :rtype: bool
+            """
+            return not (self.queue_1 or self.queue_2)
+
+    class Queue(object):
+        def __init__(self):
+            self.stack_1 = []
+            self.stack_2 = []
+
+        def push(self, x):
+            """
+            :type x: int
+            :rtype: nothing
+            """
+            if self.stack_2:
+                while len(self.stack_2) > 0:
+                    self.stack_1.append(self.stack_2.pop())
+            self.stack_1.append(x)
+
+        def pop(self):
+            """
+            :rtype: nothing
+            """
+            if self.stack_1:
+                while len(self.stack_1) > 1:
+                    self.stack_2.append(self.stack_1.pop())
+                self.stack_1.pop()
+            elif self.stack_2:
+                self.stack_2.pop()
+
+        def peek(self):
+            """
+            :rtype: int
+            """
+            tmp = None
+            if self.stack_1:
+                while len(self.stack_1) > 1:
+                    self.stack_2.append(self.stack_1.pop())
+                tmp = self.stack_1.pop()
+                self.stack_2.append(tmp)
+            elif self.stack_2:
+                tmp = self.stack_2[-1]
+            return tmp
+
+        def empty(self):
+            """
+            :rtype: bool
+            """
+            return not (self.stack_1 or self.stack_2)

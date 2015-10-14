@@ -786,3 +786,47 @@ class TestLeetSolution(TestCase):
                              "no", "bi", "di", "hi", "qa", "pi", "os", "uh", "wm", "an", "me", "mo", "na", "la",
                              "st", "er", "sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb",
                              "ni", "mr", "pa", "he", "lr", "sq", "ye"}))
+
+
+class TestStack(TestCase):
+    def test_push(self):
+        s = LeetSolution.Stack()
+        [s.push(x) for x in range(10)]
+        self.assertEqual(9, s.top())
+        self.assertEqual(9, s.top())
+
+    def test_pop(self):
+        s = LeetSolution.Stack()
+        s.push(1)
+        s.pop()
+        self.assertTrue(s.empty())
+
+    def test_empty(self):
+        s = LeetSolution.Stack()
+        self.assertTrue(s.empty())
+        s.push(1)
+        s.push(2)
+        self.assertFalse(s.empty())
+        s.pop()
+        self.assertEqual(1, s.top())
+        s.pop()
+        self.assertTrue(s.empty())
+
+
+class TestQueue(TestCase):
+    def test_push(self):
+        q = LeetSolution.Queue()
+        self.assertTrue(q.empty())
+        [q.push(x) for x in range(3)]
+        self.assertEqual(0, q.peek())
+        self.assertEqual(0, q.peek())
+        q.pop()
+        self.assertEqual(1, q.peek())
+        self.assertEqual(1, q.peek())
+        q.push(100)
+        self.assertEqual(1, q.peek())
+        q.pop()
+        q.pop()
+        self.assertEqual(100, q.peek())
+        q.pop()
+        self.assertTrue(q.empty())
