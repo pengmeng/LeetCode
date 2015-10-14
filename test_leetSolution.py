@@ -766,3 +766,23 @@ class TestLeetSolution(TestCase):
         s = LeetSolution()
         self.assertEqual(1, s.minCut('aab'))
         self.assertEqual(2, s.minCut('aabbbabb'))
+
+    def test_findDuplicate(self):
+        s = LeetSolution()
+        self.assertEqual(3, s.findDuplicate(list(range(1, 11)) + [3]))
+        self.assertEqual(5, s.findDuplicate(list(range(1, 10)) + [5] * 2))
+
+    @unittest.skip('succ')
+    def test_findLadders(self):
+        s = LeetSolution()
+        print(s.findLadders('hit', 'cog', {"hot", "dot", "dog", "lot", "log"}))
+        print(s.findLadders("qa",
+                            "sq",
+                            {"si", "go", "se", "cm", "so", "ph", "mt", "db", "mb", "sb", "kr", "ln", "tm", "le",
+                             "av", "sm", "ar", "ci", "ca", "br", "ti", "ba", "to",
+                             "ra", "fa", "yo", "ow", "sn", "ya", "cr", "po", "fe", "ho", "ma", "re", "or", "rn",
+                             "au", "ur", "rh", "sr", "tc", "lt", "lo", "as", "fr",
+                             "nb", "yb", "if", "pb", "ge", "th", "pm", "rb", "sh", "co", "ga", "li", "ha", "hz",
+                             "no", "bi", "di", "hi", "qa", "pi", "os", "uh", "wm", "an", "me", "mo", "na", "la",
+                             "st", "er", "sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb",
+                             "ni", "mr", "pa", "he", "lr", "sq", "ye"}))

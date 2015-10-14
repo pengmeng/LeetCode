@@ -2,6 +2,7 @@ __author__ = 'mengpeng'
 from ListNode import ListNode
 from TreeNode import TreeNode
 from graph import UndirectedGraphNode
+from collections import defaultdict
 import MP_Sort.InsertSort
 import functools
 import string
@@ -1186,6 +1187,7 @@ class LeetSolution:
     def ladderLength(self, start, end, dict):
         distance = {start: 1}
         queue = [start]
+        dict_set = set(dict)
         while queue:
             word = queue.pop(0)
             for i in range(len(word)):
@@ -1193,7 +1195,7 @@ class LeetSolution:
                     newword = word[:i] + l + word[i+1:]
                     if newword == end:
                         return distance[word] + 1
-                    if newword in dict and newword not in distance:
+                    if newword in dict_set and newword not in distance:
                         queue.append(newword)
                         distance[newword] = distance[word] + 1
         return 0
@@ -1881,3 +1883,45 @@ class LeetSolution:
                 else:
                     isp[j][i] = False
         return cut[length]
+
+    # Find the Duplicate Number
+    def findDuplicate(self, nums):
+        left, right = 1, len(nums) - 1
+        while left < right:
+            mid = (left + right) >> 1
+            left, right = (left, mid) if sum(x <= mid for x in nums) > mid else (mid + 1, right)
+        return right
+
+    # Word Ladder II
+    def findLadders(self, beginWord, endWord, wordlist):
+        length = len(beginWord)
+        forward, result = True, []
+        front, back = defaultdict(list), defaultdict(list)
+        front[beginWord].append([beginWord])
+        back[endWord].append([endWord])
+        wordlist.discard(beginWord)
+        if endWord not in wordlist:
+            wordlist.add(endWord)
+        while front:
+            new_dict = defaultdict(list)
+            for word, paths in iter(front.items()):
+                for i in range(length):
+                    for c in string.ascii_lowercase:
+                        each = word[:i] + c + word[i + 1:]
+                        if each in wordlist:
+                            if forward:
+                                new_dict[each] += [path + [each] for path in paths]
+                            else:
+                                new_dict[each] += [[each] + path for path in paths]
+            front = new_dict
+            intersect = set(front) & set(back)
+            if intersect:
+                if not forward:
+                    front, back = back, front
+                result += [f + b[1:] for word in intersect for f in front[word] for b in back[word]]
+                return result
+            if len(front) > len(back):
+                front, back = back, front
+                forward = not forward
+            wordlist -= set(front)
+        return []
