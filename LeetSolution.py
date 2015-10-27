@@ -2116,3 +2116,40 @@ class LeetSolution:
 
     def isBadVersion(self, x):
         pass
+
+    # Lowest Common Ancestor of a Binary Search Tree
+    def lowestCommonAncestor(self, root, p, q):
+        curr = root
+        while curr:
+            if curr.val > p.val and curr.val > q.val and curr.left:
+                curr = curr.left
+                continue
+            elif curr.val < p.val and curr.val < q.val and curr.right:
+                curr = curr.right
+                continue
+            break
+        return curr
+
+    # Lowest Common Ancestor of a Binary Tree
+    def lowestCommonAncestorii(self, root, p, q):
+        if not root or root is p or root is q:
+            return root
+        if self.isDescendant(p, q):
+            return p
+        if self.isDescendant(q, p):
+            return q
+        p_in_left = self.isDescendant(root.left, p)
+        q_in_left = self.isDescendant(root.left, q)
+        if p_in_left != q_in_left:
+            return root
+        if p_in_left:
+            return self.lowestCommonAncestorii(root.left, p, q)
+        else:
+            return self.lowestCommonAncestorii(root.right, p, q)
+
+    def isDescendant(self, x, y):
+        if not x:
+            return False
+        if x == y:
+            return True
+        return self.isDescendant(x.left, y) or self.isDescendant(x.right, y)
