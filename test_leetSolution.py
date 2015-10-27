@@ -871,3 +871,18 @@ class TestQueue(TestCase):
         for i in range(10):
             a, b = randint(0, 10 ** 6), randint(0, 10 ** 6)
             self.assertEqual(str(a * b), s.multiply(str(a), str(b)))
+
+    def test_calculate(self):
+        s = LeetSolution()
+        self.assertEqual(20, s.calculate('10 + 10'))
+        self.assertEqual(30, s.calculate('(20 + 10)'))
+        self.assertEqual(23, s.calculate('(1+(4+5+2)-3)+(6+8)'))
+
+    def test_calculateii(self):
+        s = LeetSolution()
+        self.assertEqual(20, s.calculateii('2 * 10'))
+        self.assertEqual(5, s.calculateii('10 / 2'))
+        self.assertEqual(7, s.calculateii('3 + 2 * 2'))
+        self.assertEqual(1, s.calculateii('3 / 2'))
+        self.assertEqual(5, s.calculateii('3 + 5 / 2'))
+        self.assertEqual(13, s.calculateii('14-3/2'))

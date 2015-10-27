@@ -2153,3 +2153,51 @@ class LeetSolution:
         if x == y:
             return True
         return self.isDescendant(x.left, y) or self.isDescendant(x.right, y)
+
+    # Basic Calculator
+    def calculate(self, s):
+        stack = []
+        sign, num, result = 1, 0, 0
+        for i in range(len(s)):
+            c = s[i]
+            if c.isdigit():
+                num = num * 10 + int(c)
+            elif c == '+' or c == '-':
+                result += sign * num
+                sign = 1 if c == '+' else -1
+                num = 0
+            elif c == '(':
+                stack.append(result)
+                stack.append(sign)
+                result, sign = 0, 1
+            elif c == ')':
+                result += sign * num
+                result *= stack.pop()
+                result += stack.pop()
+                num = 0
+        return result + sign * num
+
+    # Basic Calculator II
+    def calculateii(self, s):
+        s += '+'
+        stack = []
+        sign, num = '+', 0
+        for i in range(len(s)):
+            c = s[i]
+            if c == ' ':
+                continue
+            elif c.isdigit():
+                num = num * 10 + int(c)
+            else:
+                if sign == '+':
+                    stack.append(num)
+                elif sign == '-':
+                    stack.append(-num)
+                elif sign == '*':
+                    stack.append(stack.pop() * num)
+                elif sign == '/':
+                    tmp = stack.pop()
+                    stack.append(abs(tmp) // num if tmp >= 0 else -(abs(tmp) // num))
+                sign = c
+                num = 0
+        return sum(stack)
