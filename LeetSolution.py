@@ -2219,3 +2219,29 @@ class LeetSolution:
                 if dt[p] != word:
                     return False
         return True
+
+    # Intersection of Two Linked Lists
+    def getIntersectionNode(self, headA, headB):
+        if not headA or not headB:
+            return None
+        len_a = self.listlen(headA)
+        len_b = self.listlen(headB)
+        if len_a < len_b:
+            len_a, len_b = len_b, len_a
+            headA, headB = headB, headA
+        while len_a > len_b:
+            headA = headA.next
+            len_a -= 1
+        while headA and headB:
+            if headA == headB:
+                return headA
+            headA = headA.next
+            headB = headB.next
+        return None
+
+    def listlen(self, head):
+        n = 0
+        while head:
+            head = head.next
+            n += 1
+        return n
