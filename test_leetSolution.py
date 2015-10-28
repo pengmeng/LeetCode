@@ -894,3 +894,13 @@ class TestQueue(TestCase):
         self.assertFalse(s.wordPattern('aaaa', 'dog cat cat dog'))
         self.assertFalse(s.wordPattern('abba', 'dog dog dog dog'))
         self.assertTrue(s.wordPattern('aaaa', 'dog dog dog dog'))
+
+    def test_combinationSum3(self):
+        s = LeetSolution()
+        self.assertEqual([[1, 2, 4]], s.combinationSum3(3, 7))
+        self.assertEqual([[2, 3, 4], [1, 3, 5], [1, 2, 6]], s.combinationSum3(3, 9))
+
+    def test_combinationSum3ii(self):
+        s = LeetSolution()
+        self.assertEqual([[1, 2, 4]], s.combinationSum3ii(3, 7))
+        self.assertEqual([[1, 2, 6], [1, 3, 5], [2, 3, 4]], s.combinationSum3ii(3, 9))

@@ -2245,3 +2245,32 @@ class LeetSolution:
             head = head.next
             n += 1
         return n
+
+    # Combination Sum III
+    # Iterative Backtracking
+    def combinationSum3(self, k, n):
+        result = []
+        stack = [(0, 1, [])]    # current total, start, combination
+        while stack:
+            total, start, comb = stack.pop()
+            if total == n and len(comb) == k:
+                result.append(comb)
+                continue
+            for i in range(start, 10):
+                new_total = total + i
+                if new_total > n:
+                    break
+                stack.append((new_total, i + 1, comb + [i]))
+        return result
+
+    # Combination Sum III
+    # Python Generator
+    def combinationSum3ii(self, k, n):
+        return list(self.combinationSum3ii_helper(k, n, list(range(1, 10))))
+
+    def combinationSum3ii_helper(self, k, n, rest):
+        if k == 1 and n in rest:
+            yield [n]
+        for i, num in enumerate(rest):
+            for each in self.combinationSum3ii_helper(k - 1, n - num, rest[i + 1:]):
+                yield [num] + each
