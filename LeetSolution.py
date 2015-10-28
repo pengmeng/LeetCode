@@ -2201,3 +2201,21 @@ class LeetSolution:
                 sign = c
                 num = 0
         return sum(stack)
+
+    # Word Pattern
+    def wordPattern(self, pattern, str):
+        words = str.split(' ')
+        dt = {}
+        if len(pattern) != len(words):
+            return False
+        for p, word in zip(pattern, words):
+            if p not in dt:
+                if word in dt:
+                    return False
+                else:
+                    dt[p] = word
+                    dt[word] = p
+            else:
+                if dt[p] != word:
+                    return False
+        return True

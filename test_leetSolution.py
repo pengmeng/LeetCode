@@ -886,3 +886,11 @@ class TestQueue(TestCase):
         self.assertEqual(1, s.calculateii('3 / 2'))
         self.assertEqual(5, s.calculateii('3 + 5 / 2'))
         self.assertEqual(13, s.calculateii('14-3/2'))
+
+    def test_wordPattern(self):
+        s = LeetSolution()
+        self.assertTrue(s.wordPattern('abba', 'dog cat cat dog'))
+        self.assertFalse(s.wordPattern('abba', 'dog cat cat fish'))
+        self.assertFalse(s.wordPattern('aaaa', 'dog cat cat dog'))
+        self.assertFalse(s.wordPattern('abba', 'dog dog dog dog'))
+        self.assertTrue(s.wordPattern('aaaa', 'dog dog dog dog'))
