@@ -1,5 +1,6 @@
 __author__ = 'mengpeng'
 from ListNode import ListNode
+from ListNode import RandomListNode
 from TreeNode import TreeNode
 from graph import UndirectedGraphNode
 from collections import defaultdict
@@ -2297,3 +2298,17 @@ class LeetSolution:
         count_2 = sum(num == num2 for num in iter(nums))
         result = [num for num, count in [(num1, count_1), (num2, count_2)] if count > len(nums) / 3]
         return list(set(result))
+
+    # Copy List with Random Pointer
+    def copyRandomList(self, head):
+        self.visited_node = {}
+        return self.copyRandomList_helper(head)
+
+    def copyRandomList_helper(self, node):
+        if not node:
+            return None
+        if node not in self.visited_node:
+            self.visited_node[node] = RandomListNode(node.label)
+            self.visited_node[node].next = self.copyRandomList_helper(node.next)
+            self.visited_node[node].random = self.copyRandomList_helper(node.random)
+        return self.visited_node[node]
