@@ -2274,3 +2274,26 @@ class LeetSolution:
         for i, num in enumerate(rest):
             for each in self.combinationSum3ii_helper(k - 1, n - num, rest[i + 1:]):
                 yield [num] + each
+
+    # Majority Element II
+    def majorityElementii(self, nums):
+        num1, num2 = 0, 0
+        c1, c2 = 0, 0
+        for num in iter(nums):
+            if num == num1:
+                c1 += 1
+            elif num == num2:
+                c2 += 1
+            elif c1 == 0:
+                num1 = num
+                c1 = 1
+            elif c2 == 0:
+                num2 = num
+                c2 = 1
+            else:
+                c1 -= 1
+                c2 -= 1
+        count_1 = sum(num == num1 for num in iter(nums))
+        count_2 = sum(num == num2 for num in iter(nums))
+        result = [num for num, count in [(num1, count_1), (num2, count_2)] if count > len(nums) / 3]
+        return list(set(result))

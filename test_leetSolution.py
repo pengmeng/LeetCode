@@ -904,3 +904,10 @@ class TestQueue(TestCase):
         s = LeetSolution()
         self.assertEqual([[1, 2, 4]], s.combinationSum3ii(3, 7))
         self.assertEqual([[1, 2, 6], [1, 3, 5], [2, 3, 4]], s.combinationSum3ii(3, 9))
+
+    def test_majorityElementii(self):
+        s = LeetSolution()
+        self.assertEqual([1, 2], s.majorityElementii([1] * 5 + [2] * 5))
+        self.assertEqual([1], s.majorityElementii([1] * 5 + [2] * 2))
+        self.assertEqual([1, 2], s.majorityElementii([1] * 5 + [2] * 5 + [3] * 3))
+        print(s.majorityElementii([0, 0, 0]))
