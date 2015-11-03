@@ -4,6 +4,7 @@ from ListNode import RandomListNode
 from TreeNode import TreeNode
 from graph import UndirectedGraphNode
 from collections import defaultdict
+import collections
 import MP_Sort.InsertSort
 import functools
 import string
@@ -2312,3 +2313,24 @@ class LeetSolution:
             self.visited_node[node].next = self.copyRandomList_helper(node.next)
             self.visited_node[node].random = self.copyRandomList_helper(node.random)
         return self.visited_node[node]
+
+    # Sliding Window Maximum
+    def maxSlidingWindow(self, nums, k):
+        if not nums or not k:
+            return []
+        deque = collections.deque()
+        result = []
+        for i in range(k):
+            if len(deque):
+                while len(deque) and nums[deque[-1]] <= nums[i]:
+                    deque.pop()
+            deque.append(i)
+        result.append(nums[deque[0]])
+        for i in range(k, len(nums)):
+            while len(deque) and nums[deque[-1]] <= nums[i]:
+                deque.pop()
+            deque.append(i)
+            if deque[0] <= i - k:
+                deque.popleft()
+            result.append(nums[deque[0]])
+        return result
