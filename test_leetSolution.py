@@ -910,9 +910,13 @@ class TestQueue(TestCase):
         self.assertEqual([1, 2], s.majorityElementii([1] * 5 + [2] * 5))
         self.assertEqual([1], s.majorityElementii([1] * 5 + [2] * 2))
         self.assertEqual([1, 2], s.majorityElementii([1] * 5 + [2] * 5 + [3] * 3))
-        print(s.majorityElementii([0, 0, 0]))
 
     def test_maxSlidingWindow(self):
         s = LeetSolution()
         self.assertEqual([7, 7, 7], s.maxSlidingWindow([1, 2, 7, 7, 3], 3))
         self.assertEqual([3, 3, 5, 5, 6, 7], s.maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3))
+
+    def test_isInterleave(self):
+        s = LeetSolution()
+        self.assertTrue(s.isInterleave('aabcc', 'dbbca', 'aadbbcbcac'))
+        self.assertFalse(s.isInterleave('aabcc', 'dbbca', 'aadbbbaccc'))
