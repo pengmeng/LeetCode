@@ -50,3 +50,12 @@ class TreeNode:
             if node.right:
                 queue.append(node.right)
         print(result)
+
+
+class TrieNode(object):
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.word = False
+        self.children = {}

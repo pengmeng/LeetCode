@@ -2,6 +2,7 @@ __author__ = 'mengpeng'
 from ListNode import ListNode
 from ListNode import RandomListNode
 from TreeNode import TreeNode
+from TreeNode import TrieNode
 from graph import UndirectedGraphNode
 from collections import defaultdict
 import collections
@@ -2345,9 +2346,58 @@ class LeetSolution:
         for i in range(1, m + 1):
             dp[i][0] = dp[i - 1][0] and s1[i - 1] == s3[i - 1]
         for j in range(1, n + 1):
-            dp[0][j - 1] = dp[0][j - 1] and s2[j - 1] == s3[j - 1]
+            dp[0][j] = dp[0][j - 1] and s2[j - 1] == s3[j - 1]
         for i in range(1, m + 1):
             for j in range(1, n + 1):
                 dp[i][j] = (dp[i - 1][j] and s1[i - 1] == s3[i - 1 + j]) \
                            or (dp[i][j - 1] and s2[j - 1] == s3[i + j - 1])
         return dp[-1][-1]
+
+    # Implement Trie (Prefix Tree)
+    class Trie(object):
+        def __init__(self):
+            self.root = TrieNode()
+
+        def insert(self, word):
+            """
+            Inserts a word into the trie.
+            :type word: str
+            :rtype: void
+            """
+            node = self.root
+            for c in word:
+                if c in node.children:
+                    node = node.children[c]
+                else:
+                    new_node = TrieNode()
+                    node.children[c] = new_node
+                    node = new_node
+            node.word = True
+
+        def search(self, word):
+            """
+            Returns if the word is in the trie.
+            :type word: str
+            :rtype: bool
+            """
+            node, is_end = self._find_node(word)
+            return is_end and node.word
+
+        def startsWith(self, prefix):
+            """
+            Returns if there is any word in the trie
+            that starts with the given prefix.
+            :type prefix: str
+            :rtype: bool
+            """
+            _, is_end = self._find_node(prefix)
+            return is_end
+
+        def _find_node(self, word):
+            node = self.root
+            for c in word:
+                if c in node.children:
+                    node = node.children[c]
+                else:
+                    return node, False
+            return node, True

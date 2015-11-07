@@ -920,3 +920,28 @@ class TestQueue(TestCase):
         s = LeetSolution()
         self.assertTrue(s.isInterleave('aabcc', 'dbbca', 'aadbbcbcac'))
         self.assertFalse(s.isInterleave('aabcc', 'dbbca', 'aadbbbaccc'))
+
+
+class TestTrie(TestCase):
+    def test_search(self):
+        s = LeetSolution.Trie()
+        s.insert('abcd')
+        s.insert('keyword')
+        s.insert('something')
+        self.assertTrue(s.search('abcd'))
+        self.assertTrue(s.search('keyword'))
+        self.assertFalse(s.search('key'))
+        self.assertFalse(s.search('not'))
+
+    def test_startsWith(self):
+        s = LeetSolution.Trie()
+        s.insert('abcd')
+        s.insert('abcdefd')
+        s.insert('keyword')
+        s.insert('something')
+        self.assertTrue(s.startsWith('ab'))
+        self.assertTrue(s.startsWith('some'))
+        self.assertTrue(s.startsWith('some'))
+        self.assertTrue(s.startsWith('key'))
+        self.assertFalse(s.startsWith('keya'))
+        self.assertFalse(s.startsWith('not'))
