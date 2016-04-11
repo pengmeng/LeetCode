@@ -514,6 +514,37 @@ class TestLeetSolution(TestCase):
         self.assertEqual(2, s.strstrkmp("ababac", "abac"))
         self.assertEqual(-1, s.strstrkmp("mississippi", "issipi"))
 
+    def test_strstrkmp2(self):
+        s = LeetSolution()
+        self.assertEqual(-1, s.strstrkmp2("", "abc"))
+        self.assertEqual(0, s.strstrkmp2("abc", ""))
+        self.assertEqual(0, s.strstrkmp2("", ""))
+        self.assertEqual(2, s.strstrkmp2("bcbcdef", "bcd"))
+        self.assertEqual(2, s.strstrkmp2("ababac", "abac"))
+        self.assertEqual(-1, s.strstrkmp2("mississippi", "issipi"))
+
+    def test_strstrhp(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.strstrhp("ababac", "abac"))
+        self.assertEqual(-1, s.strstrhp("", "abc"))
+        self.assertEqual(0, s.strstrhp("abc", ""))
+        self.assertEqual(0, s.strstrhp("", ""))
+        self.assertEqual(2, s.strstrhp("bcbcdef", "bcd"))
+        self.assertEqual(2, s.strstrhp("ababac", "abac"))
+        self.assertEqual(-1, s.strstrhp("mississippi", "issipi"))
+
+    def test_strstrsd(self):
+        s = LeetSolution()
+        self.assertEqual(2, s.strstrsd("ababac", "abac"))
+        self.assertEqual(-1, s.strstrsd("", "abc"))
+        self.assertEqual(0, s.strstrsd("abc", ""))
+        self.assertEqual(0, s.strstrsd("", ""))
+        self.assertEqual(2, s.strstrsd("bcbcdef", "bcd"))
+        self.assertEqual(2, s.strstrsd("ababac", "abac"))
+        self.assertEqual(-1, s.strstrsd("mississippi", "issipi"))
+        self.assertEqual(-1, s.strstrsd("mississippi", "a"))
+        self.assertEqual(1, s.strstrsd("mississippi", "issi"))
+
     def test_divide(self):
         s = LeetSolution()
         self.assertEqual(2, s.divide(4, 2))
@@ -945,3 +976,14 @@ class TestTrie(TestCase):
         self.assertTrue(s.startsWith('key'))
         self.assertFalse(s.startsWith('keya'))
         self.assertFalse(s.startsWith('not'))
+
+
+class TestWordDictionary(TestCase):
+    def test_search(self):
+        s = LeetSolution.WordDictionary()
+        s.addWord('ab')
+        s.addWord('a')
+        # self.assertTrue(s.search('a'))
+        # self.assertTrue(s.search('ab'))
+        # self.assertTrue(s.search('a.'))
+        self.assertTrue(s.search('..'))

@@ -57,7 +57,7 @@ def postorder(root):
     result = []
     while stack:
         node = stack.pop()
-        if (not node.left and not node.right) or pre is node.left or pre is node.right:
+        if (not node.left and not node.right) or pre is node.right or pre is node.left:
             result.append(node.val)
             pre = node
         else:

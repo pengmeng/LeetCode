@@ -19,6 +19,30 @@ def partition_array(array, start, end):
     return i
 
 
+def quicksort_3way(array, start, end):
+    if start < end:
+        l, r = partition_3way(array, start, end)
+        quicksort_3way(array, start, l - 1)
+        quicksort_3way(array, r + 1, end)
+
+
+def partition_3way(array, start, end):
+    pivot = array[end]
+    l, i, r = start, start, end
+    while i < r:
+        if array[i] < pivot:
+            array[i], array[l] = array[l], array[i]
+            l += 1
+            i += 1
+        elif array[i] > pivot:
+            r -= 1
+            array[i], array[r] = array[r], array[i]
+        else:
+            i += 1
+    array[r], array[end] = array[end], array[r]
+    return l, r
+
+
 def quicksort_list(head, end):
     if head and head is not end:
         par = partition_list(head, end)

@@ -1056,6 +1056,66 @@ class LeetSolution:
                 return i - nlen + 1
         return -1
 
+    def strstrkmp2(self, haystack, needle):
+        # if not haystack or not needle:
+        #     return -1
+        i, j, m, n = -1, 0, len(haystack), len(needle)
+        kmpnext = [-1] * n
+        while j < n - 1:
+            if i == -1 or needle[i] == needle[j]:
+                i, j = i + 1, j + 1
+                kmpnext[j] = i
+            else:
+                i = kmpnext[i]
+        i = j = 0
+        while i < m and j < n:
+            if j == -1 or haystack[i] == needle[j]:
+                i, j = i + 1, j + 1
+            else:
+                j = kmpnext[j]
+        if j == n:
+            return i - j
+        return -1
+
+    def strstrhp(self, haystack, needle):
+        m, n = len(haystack), len(needle)
+        if m < n:
+            return -1
+        bad_char_jump = defaultdict(lambda: n)
+        for i in range(n - 1):
+            bad_char_jump[needle[i]] = n - i - 1
+        pos = 0
+        while pos <= m - n:
+            j = n - 1
+            while j >= 0 and needle[j] == haystack[pos + j]:
+                j -= 1
+            if j == -1:
+                return pos
+            else:
+                pos += bad_char_jump[haystack[pos + n - 1]]
+        return -1
+
+    def strstrsd(self, haystack, needle):
+        m, n = len(haystack), len(needle)
+        if m < n:
+            return -1
+        bad_char_jump = defaultdict(lambda: n + 1)
+        for i in range(n):
+            bad_char_jump[needle[i]] = n - i
+        pos = 0
+        while pos <= m - n:
+            i, j = pos, 0
+            while j < n and haystack[i] == needle[j]:
+                i += 1
+                j += 1
+            if j == n:
+                return pos
+            elif pos == m - n:
+                return -1
+            else:
+                pos += bad_char_jump[haystack[pos + n]]
+        return -1
+
     #Max Points on a Line
     def maxPoints(self, points):
         length = len(points)
@@ -2401,3 +2461,57 @@ class LeetSolution:
                 else:
                     return node, False
             return node, True
+
+    class WordDictionary(object):
+        def __init__(self):
+            """
+            initialize your data structure here.
+            """
+            self.map = {}
+
+        def addWord(self, word):
+            """
+            Adds a word into the data structure.
+            :type word: str
+            :rtype: void
+            """
+            curr_dict = self.map
+            for c in word:
+                if c in curr_dict:
+                    curr_dict = curr_dict[c]
+                else:
+                    curr_dict[c] = {}
+                    curr_dict = curr_dict[c]
+
+        def search(self, word):
+            """
+            Returns if the word is in the data structure. A word could
+            contain the dot character '.' to represent any one letter.
+            :type word: str
+            :rtype: bool
+            """
+            curr_dict = self.map
+            for i, c in enumerate(word):
+                if c == '.':
+                    return self._search_helper(word[i:], curr_dict)
+                elif c in curr_dict:
+                    curr_dict = curr_dict[c]
+                else:
+                    return False
+            return True
+
+        def _search_helper(self, suffix, curr_dict):
+            for t in string.ascii_lowercase:
+                if t not in curr_dict:
+                    continue
+                work_dict = curr_dict[t]
+                for i, c in enumerate(suffix[1:]):
+                    if c == '.':
+                        return self._search_helper(suffix[i + 1:], work_dict)
+                    elif c in work_dict:
+                        work_dict = work_dict[c]
+                    else:
+                        break
+                else:
+                    return True
+            return False
